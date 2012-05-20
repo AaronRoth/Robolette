@@ -17,7 +17,7 @@
     }
     
     // Respond with the current drink counts.
-    echo $team_one_count . " | " . $team_two_count;
+    echo $team_one_count . "|" . $team_two_count;
     
     // Reduce each count in the database by one.
     if ($team_one_count > 0)
