@@ -21,16 +21,7 @@
     }
     
     // Respond with the current drink counts.
-    echo $team_one_count . "|" . $team_two_count;
-    
-    // Reduce each count in the database by one.
-    if ($team_one_count > 0)
-      $db_handle->exec("UPDATE drinkcounts
-                        SET team_one = team_one - 1");
-    
-    if ($team_two_count > 0)
-      $db_handle->exec("UPDATE drinkcounts
-                        SET team_two = team_two - 1");
+    echo $team_one_count . $team_two_count;
     
     // Close the database connection.
     $db_handle = null;

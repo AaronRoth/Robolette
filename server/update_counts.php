@@ -14,10 +14,12 @@
     
     // Increase the counts in the database.
     if ($team_one_increase > 0)
-      $db_handle->exec("UPDATE drinkcounts SET team_one = team_one + $team_one_increase");
+      $db_handle->exec("UPDATE drinkcounts
+                        SET team_one = team_one + $team_one_increase");
     
     if ($team_two_increase > 0)
-      $db_handle->exec("UPDATE drinkcounts SET team_two = team_two + $team_two_increase");
+      $db_handle->exec("UPDATE drinkcounts
+                        SET team_two = team_two + $team_two_increase");
     
     // Close the database connection.
     $db_handle = null;

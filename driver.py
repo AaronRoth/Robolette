@@ -47,11 +47,13 @@ def main():
   
   # Request drink statuses from the server and send to the Arduino.
   while True:
-    # Get current drink values.
+    # Get and parse current drink values.
     request_object = urllib2.urlopen('http://findaaron.nfshost.com/Robolette/php/get_counts.php')
-    pour_states = request_object.read()
-    team_one_state = int(pour_states[0])
-    team_two_state = int(pour_states[1])
+    pour_states_str = request_object.read()
+    pour_states_list = pour_states_str.split('|')
+    
+    team_one_state = int(pour_states_list[0])
+    team_two_state = int(pour_states_list[1])
     
     # Decide which valves to open if any.
     if team_one_state > 0 and team_two_state == 0:
