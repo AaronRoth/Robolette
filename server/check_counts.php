@@ -21,7 +21,7 @@
     }
     
     // Respond with the current drink counts.
-    echo $team_one_count . $team_two_count;
+    echo $team_one_count . "|" . $team_two_count;
     
     // Close the database connection.
     $db_handle = null;
