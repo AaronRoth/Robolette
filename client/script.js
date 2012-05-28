@@ -29,7 +29,8 @@ var numbers = ['0', '32', '15', '19', '4', '21', '2', '25', '17', '34', '6',
                '12', '35', '3', '26'];
 
 // Wheel spinning.
-var spinArcStart = 10;
+var spinAngle = 0;
+var spinAngleStart = 10;
 var spinTime = 0;
 var spinTimeout = null;
 var spinTimeTotal = 0;
@@ -38,6 +39,7 @@ var spinTimeTotal = 0;
 
 $(document).ready(function() {
   $('#start-button').click(start_game);
+  $('#spin-button').click(spin);
 });
 
 function draw_wheel() {
@@ -86,13 +88,54 @@ function draw_wheel() {
       context.fillText(text, -context.measureText(text).width / 2, 0);
       context.restore();
     }
+    
+    // Draw arrow.
+    context.fillStyle = white;
+    context.beginPath();
+    context.moveTo(250 - 0, 250 - (outsideRadius + 5));
+    context.lineTo(250 + 0, 250 - (outsideRadius + 5));
+    context.lineTo(250 + 0, 250 - (outsideRadius - 5));
+    context.lineTo(250 + 9, 250 - (outsideRadius - 5));
+    context.lineTo(250 + 0, 250 - (outsideRadius - 13));
+    context.lineTo(250 - 9, 250 - (outsideRadius - 5));
+    context.lineTo(250 - 0, 250 - (outsideRadius - 5));
+    context.lineTo(250 - 0, 250 - (outsideRadius + 5));
+    context.fill();
   } else {
     alert('Your browser does not support this game! ' +
           'Try Safari, Chrome, Firefox, or Opera.');
   }
 }
 
-// Sets up the game board.
+function ease_out(t, b, c, d) {
+  var ts = (t /= d) * t;
+  var tc = ts * t;
+  
+  return b + c * (tc + -3 * ts + 3 * t);
+}
+
+function rotate_wheel() {
+  spinTime += 30;
+  
+  if (spinTime >= spinTimeTotal) {
+    stop_wheel();
+  } else {
+    spinAngle = spinAngleStart -
+                ease_out(spinTime, 0, spinAngleStart, spinTimeTotal);
+    
+    startAngle += spinAngle * Math.PI / 180;
+    draw_wheel();
+    spinTimeout = setTimeout('rotate_wheel()', 30);
+  }
+}
+
+function spin() {
+  spinAngleStart = Math.random() * 10 + 10;
+  spinTime = 0;
+  spinTimeTotal = (Math.random() * 10 + 2) * 1000;
+  rotate_wheel();
+}
+
 function start_game() {
   var startBank = $('#starting-bank').val();
   var minBet = $('#min-bet').val();
@@ -107,4 +150,14 @@ function start_game() {
   
   $('#game-board').fadeIn(100, 'linear');
   draw_wheel();
+}
+
+function stop_wheel() {
+  clearTimeout(spinTimeout);
+  
+  var degrees = startAngle * (-1) * 180 / Math.PI + 90;
+  var arcDegrees = arc * 180 / Math.PI;
+  var index = Math.floor((360 - degrees % 360) / arcDegrees);
+  context.save();
+  var winningNumber = numbers[index];
 }
