@@ -1,6 +1,10 @@
 // Copyright (c) 2012 Aaron Roth
 // See the file license.txt for copying permission.
 //
+// This code is based on and at times copied verbatim from a tutorial 
+// written by Charlie Key. His tutorial is hosted on www.switchonthecode.com
+// and is titled "Creating a Roulette Wheel Using HTML5 Canvas."
+//
 
 // ------------------ Globals ------------------ //
 
@@ -13,7 +17,7 @@ var arc = Math.PI / 18.5;
 var context;
 var insideRadius = 175;
 var outsideRadius = 200;
-var startAngle = -89.6;
+var startAngle = 1.5 * Math.PI;
 var textRadius = 184;
 
 // Wheel style and content.
@@ -30,7 +34,7 @@ var numbers = ['0', '32', '15', '19', '4', '21', '2', '25', '17', '34', '6',
 
 // Wheel spinning.
 var spinAngle = 0;
-var spinAngleStart = 10;
+var spinAngleStart = 0;
 var spinTime = 0;
 var spinTimeout = null;
 var spinTimeTotal = 0;
@@ -155,9 +159,15 @@ function start_game() {
 function stop_wheel() {
   clearTimeout(spinTimeout);
   
-  var degrees = startAngle * (-1) * 180 / Math.PI + 90;
-  var arcDegrees = arc * 180 / Math.PI;
-  var index = Math.floor((360 - degrees % 360) / arcDegrees);
+  // Calculate what number the ball landed on.
+  var radiansSpun = startAngle - (1.5 * Math.PI);
+  var unitsSpun = radiansSpun / arc;
+  var number = Math.ceil((unitsSpun % 37));
+  if (number == 0) {
+    number = 37;
+  }
+  var index = 37 - number;
   context.save();
   var winningNumber = numbers[index];
+  alert('The winning number is ' + winningNumber + '!');
 }
