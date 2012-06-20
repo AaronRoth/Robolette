@@ -165,9 +165,21 @@ var gameState = {
                     "team1": 0,
                     "team2": 0
                   },
+                  "drinks": {
+                    "team1": 0,
+                    "team2": 0
+                  },
                   "max": 0,
                   "min": 0,
                   "scores": {
+                    "team1": 0,
+                    "team2": 0
+                  },
+                  "state": {
+                    "changes": 1,
+                    "spins": 1
+                  },
+                  "totals": {
                     "team1": 0,
                     "team2": 0
                   },
@@ -211,8 +223,68 @@ var spinTimeTotal = 0;
 // --------------------------------------------- //
 
 $(document).ready(function() {
-  $('#start-button').click(start_game);
+  $('#start-button').click(initialize_game);
   $('#spin-button').click(spin);
+  
+  // if wheel spin action is made
+      // call spin function
+          // on spin stop,
+              // set changes state in gameboard state to 0
+              // set spins state in gameboard state to 0
+              // call update view function
+              // call determine outcome function
+  
+  // if game turn indicator is clicked/touched,
+      // update current player global var
+      // set boardstatechange global var = 1
+      
+  // if undo button clicked,
+      // toggle boardstatechange global var
+  
+  // if board is clicked/touched,
+      // if takingchanges global var  == 1
+          // call update board state function
+      // else provide feedback that bets are no longer being accepted
+      
+  // if reset game button is clicked
+      // reload entire page
+  
+  // update board state function
+      // check for several states
+          // DELETING (if boardstatechange global var == 0)
+              // if current player has any bets on clicked bet number
+                  // decrement that bet number by 1 bet amount for current player in the board state model
+                  // decrement totals var by 1 in model for that player
+                  // increment chip count for current player by 1
+              // else provide feedback that current player has no bet on clicked bet number
+          // ADDING (if boardstatechange global var == 1)
+              // if current player has more chips to bet with
+                  // increment bet number clicked on by 1 bet amount for current player in the board state model
+                  // increment totals var by 1 in model for that player
+                  // decrement chip count for current player by 1
+              // else provide feedback that no more chips are left
+      // finally "view" needs to ask the model for the current board state
+          // call update view function
+  
+  // update view function
+      // update entire page "view" elements by looking at the current board state
+  
+  // determine outcome function
+      // update wheel color and wheel number in model (basically update winning color and number)
+      // visit all winning bet locations
+          // if totals for team1 >= min bet
+              // drinks["team2"] += number of bets by team1 on that bet
+          // if totals for team2 >= min bet
+              // drinks["team1"] += number of bets by team2 on that bet
+      // update scoreboard
+      // send drink counts for each team to database
+      // reset all temporary values in the model
+          // bets
+          // totals
+          // drinks
+          // wheel
+          // state
+      // call update view function
 });
 
 function draw_wheel() {
@@ -287,6 +359,26 @@ function ease_out(t, b, c, d) {
   return b + c * (tc + -3 * ts + 3 * t);
 }
 
+function initialize_game() {
+  var startBank = $('#starting-bank').val();
+  var minBet = $('#min-bet').val();
+  var maxBet = $('#max-bet').val();
+  
+  gameState["bank"] = startBank;
+  gameState["min"] = minBet;
+  gameState["max"] = maxBet;
+  
+  $('#form').fadeOut(100, 'linear', function() {
+    $('#form').remove();
+  });
+  $('#title').fadeOut(100, 'linear', function() {
+    $('#title').remove();
+  });
+  
+  $('#game-board').fadeIn(100, 'linear');
+  draw_wheel();
+}
+
 function rotate_wheel() {
   spinTime += 30;
   
@@ -309,22 +401,6 @@ function spin() {
   rotate_wheel();
 }
 
-function start_game() {
-  var startBank = $('#starting-bank').val();
-  var minBet = $('#min-bet').val();
-  var maxBet = $('#max-bet').val();
-  
-  $('#form').fadeOut(100, 'linear', function() {
-    $('#form').remove();
-  });
-  $('#title').fadeOut(100, 'linear', function() {
-    $('#title').remove();
-  });
-  
-  $('#game-board').fadeIn(100, 'linear');
-  draw_wheel();
-}
-
 function stop_wheel() {
   clearTimeout(spinTimeout);
   
@@ -338,6 +414,5 @@ function stop_wheel() {
   var index = 37 - number;
   context.save();
   var winningNumber = numbers[index];
-  alert(gameState["wheel"]["color"]);
   alert('The winning number is ' + winningNumber + '!');
 }
