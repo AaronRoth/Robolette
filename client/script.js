@@ -8,6 +8,175 @@
 
 // ------------------ Globals ------------------ //
 
+// Game state object.
+var gameState = {
+                  "bank": 0,
+                  "bets": [
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    {
+                      "team1": 0,
+                      "team2": 0
+                    }
+                  ],
+                  "chips": {
+                    "team1": 0,
+                    "team2": 0
+                  },
+                  "max": 0,
+                  "min": 0,
+                  "scores": {
+                    "team1": 0,
+                    "team2": 0
+                  },
+                  "wheel": {
+                    "color": "",
+                    "number": 0
+                  }
+                };
+
 // Canvas.
 var canvasX = 250;
 var canvasY = 250;
@@ -162,12 +331,13 @@ function stop_wheel() {
   // Calculate what number the ball landed on.
   var radiansSpun = startAngle - (1.5 * Math.PI);
   var unitsSpun = radiansSpun / arc;
-  var number = Math.ceil((unitsSpun % 37));
+  var number = Math.ceil(unitsSpun % 37);
   if (number == 0) {
     number = 37;
   }
   var index = 37 - number;
   context.save();
   var winningNumber = numbers[index];
+  alert(gameState["wheel"]["color"]);
   alert('The winning number is ' + winningNumber + '!');
 }
