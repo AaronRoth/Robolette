@@ -178,7 +178,8 @@ var gameState = {
                   "state": {
                     "changes": 1,
                     "player": "none",
-                    "spins": 1
+                    "spins": 1,
+                    "undo": 0
                   },
                   "totals": {
                     "team1": 0,
@@ -225,6 +226,28 @@ var spinTimeTotal = 0;
 
 $(document).ready(function() {
   $('#start-button').click(initialize_game);
+  
+  // Make team 1 the current player.
+  $('#team1').click(function() {
+    gameState['state']['player'] = 'team1';
+    gameState['state']['undo'] = 0;
+  });
+  
+  // Make team 2 the current player.
+  $('#team2').click(function() {
+    gameState['state']['player'] = 'team2';
+    gameState['state']['undo'] = 0;
+  });
+  
+  // Make or undo bets.
+  $('#game-board').click(function(event) {
+    if (gameState['state']['changes'] == 1) {
+      update_board(event.target);
+    } else {
+      alert('Cannot make or undo bets right now!');
+    }
+  });
+  
   $('#spin-button').click(spin);
   
   // if wheel spin action is made
@@ -234,19 +257,12 @@ $(document).ready(function() {
               // set spins state in gameboard state to 0
               // call update view function
               // call determine outcome function
-  
-  // if game turn indicator is clicked/touched,
-      // update current player global var
-      // set boardstatechange global var = 1
       
   // if undo button clicked,
-      // toggle boardstatechange global var
-  
-  // if board is clicked/touched,
-      // if takingchanges global var  == 1
-          // call update board state function
-      // else provide feedback that bets are no longer being accepted
-      
+      // set boardstatechange global var = 0
+          // give some kind of visual indication that undo state is on
+          // allow that visual indicator to be clicked to set boardstatechange global var = 1
+
   // if reset game button is clicked
       // reload entire page
   
@@ -416,4 +432,8 @@ function stop_wheel() {
   context.save();
   var winningNumber = numbers[index];
   alert('The winning number is ' + winningNumber + '!');
+}
+
+function update_board(clickedObject) {
+  var clickedId = clickedObject.id;
 }
