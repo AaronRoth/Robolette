@@ -177,6 +177,7 @@ var gameState = {
                   },
                   "state": {
                     "changes": 1,
+                    "player": "none",
                     "spins": 1
                   },
                   "totals": {

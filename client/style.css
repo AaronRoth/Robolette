@@ -1,9 +1,3 @@
-.thirds-bets {
-  float: left;
-  height: 70px;
-  width: 176px;
-}
-
 body {
   margin: 0px;
 }
@@ -13,6 +7,12 @@ body {
   float: left;
   height: 400px;
   width: 400px;
+}
+
+#chip-piles {
+  float: right;
+  height: 100px;
+  width: 200px;
 }
 
 #game-board {
@@ -51,6 +51,26 @@ body {
   height: 140px;
   margin: 0px 44px 0px 44px;
   width: 528px;
+}
+
+#team1 {
+  background: blue;
+  float: left;
+  height: 100px;
+  width: 100px;
+}
+
+#team2 {
+  background: yellow;
+  float: left;
+  height: 100px;
+  width: 100px;
+}
+
+.thirds-bets {
+  float: left;
+  height: 70px;
+  width: 176px;
 }
 
 #zero-bet {

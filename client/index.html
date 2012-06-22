@@ -7,7 +7,6 @@
 	
 	<body>
 		<h1 id="title">Robolette</h1>
-	
 		<div id="form">
 			<div>
 				<span>starting bank</span>
@@ -24,7 +23,7 @@
 					<option>10</option>
 				</select>
 			</div>
-		
+			
 			<div>
 				<span>minimum bet</span>
 				<select id="min-bet">
@@ -40,7 +39,7 @@
 					<option>10</option>
 				</select>
 			</div>
-		
+			
 			<div>
 				<span>maximum bet</span>
 				<select id="max-bet">
@@ -56,13 +55,15 @@
 					<option>10</option>
 				</select>
 			</div>
-		
+			
 			<div id="start-button">play game</div>
 		</div>
-	
-		<div id="game-table" style="display: none">
-			<div id="canvas-wrapper"><canvas id="wheel" width="400" height="400"></canvas></div>
 		
+		<div id="game-table" style="display: none">
+			<div id="canvas-wrapper">
+				<canvas id="wheel" width="400" height="400"></canvas>
+			</div>
+			
 			<div id="game-board">
 				<div id="num-bets-area">
 					<div id="zero-bet">0</div>
@@ -106,7 +107,7 @@
 					<div id="2to35-bet" class="num-bets">2-1</div>
 					<div id="1to34-bet" class="num-bets">2-1</div>
 				</div>
-			
+				
 				<div id="other-bets-area">
 					<div id="1st12-bet" class="thirds-bets">1st 12</div>
 					<div id="2nd12-bet" class="thirds-bets">2nd 12</div>
@@ -119,8 +120,13 @@
 					<div id="19to36-bet" class="other-bets">19-36</div>
 				</div>
 			</div>
-		
+			
 			<div id="spin-button">spin</div>
+			
+			<div id="chip-piles">
+				<div id="team1">team 1</div>
+				<div id="team2">team 2</div>
+			</div>
 		</div>
 	</body>
 </html>
