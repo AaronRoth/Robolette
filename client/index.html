@@ -7,7 +7,7 @@
 	
 	<body>
 		<h1 id="title">Robolette</h1>
-		
+	
 		<div id="form">
 			<div>
 				<span>starting bank</span>
@@ -24,7 +24,7 @@
 					<option>10</option>
 				</select>
 			</div>
-			
+		
 			<div>
 				<span>minimum bet</span>
 				<select id="min-bet">
@@ -40,7 +40,7 @@
 					<option>10</option>
 				</select>
 			</div>
-			
+		
 			<div>
 				<span>maximum bet</span>
 				<select id="max-bet">
@@ -56,12 +56,70 @@
 					<option>10</option>
 				</select>
 			</div>
-			
+		
 			<div id="start-button">play game</div>
 		</div>
+	
+		<div id="game-table" style="display: none">
+			<div id="canvas-wrapper"><canvas id="wheel" width="400" height="400"></canvas></div>
 		
-		<div id="game-board" style="display: none">
-			<canvas id="wheel" width="500" height="500"></canvas>
+			<div id="game-board">
+				<div id="num-bets-area">
+					<div id="zero-bet">0</div>
+					<div id="1-bet" class="num-bets">1</div>
+					<div id="2-bet" class="num-bets">2</div>
+					<div id="3-bet" class="num-bets">3</div>
+					<div id="4-bet" class="num-bets">4</div>
+					<div id="5-bet" class="num-bets">5</div>
+					<div id="6-bet" class="num-bets">6</div>
+					<div id="7-bet" class="num-bets">7</div>
+					<div id="8-bet" class="num-bets">8</div>
+					<div id="9-bet" class="num-bets">9</div>
+					<div id="10-bet" class="num-bets">10</div>
+					<div id="11-bet" class="num-bets">11</div>
+					<div id="12-bet" class="num-bets">12</div>
+					<div id="13-bet" class="num-bets">13</div>
+					<div id="14-bet" class="num-bets">14</div>
+					<div id="15-bet" class="num-bets">15</div>
+					<div id="16-bet" class="num-bets">16</div>
+					<div id="17-bet" class="num-bets">17</div>
+					<div id="18-bet" class="num-bets">18</div>
+					<div id="19-bet" class="num-bets">19</div>
+					<div id="20-bet" class="num-bets">20</div>
+					<div id="21-bet" class="num-bets">21</div>
+					<div id="22-bet" class="num-bets">22</div>
+					<div id="23-bet" class="num-bets">23</div>
+					<div id="24-bet" class="num-bets">24</div>
+					<div id="25-bet" class="num-bets">25</div>
+					<div id="26-bet" class="num-bets">26</div>
+					<div id="27-bet" class="num-bets">27</div>
+					<div id="28-bet" class="num-bets">28</div>
+					<div id="29-bet" class="num-bets">29</div>
+					<div id="30-bet" class="num-bets">30</div>
+					<div id="31-bet" class="num-bets">31</div>
+					<div id="32-bet" class="num-bets">32</div>
+					<div id="33-bet" class="num-bets">33</div>
+					<div id="34-bet" class="num-bets">34</div>
+					<div id="35-bet" class="num-bets">35</div>
+					<div id="36-bet" class="num-bets">36</div>
+					<div id="3to36-bet" class="num-bets">2-1</div>
+					<div id="2to35-bet" class="num-bets">2-1</div>
+					<div id="1to34-bet" class="num-bets">2-1</div>
+				</div>
+			
+				<div id="other-bets-area">
+					<div id="1st12-bet" class="thirds-bets">1st 12</div>
+					<div id="2nd12-bet" class="thirds-bets">2nd 12</div>
+					<div id="3rd12-bet" class="thirds-bets">3rd 12</div>
+					<div id="1to18-bet" class="other-bets">1-18</div>
+					<div id="even-bet" class="other-bets">Even</div>
+					<div id="red-bet" class="other-bets">Red</div>
+					<div id="black-bet" class="other-bets">Black</div>
+					<div id="odd-bet" class="other-bets">Odd</div>
+					<div id="19to36-bet" class="other-bets">19-36</div>
+				</div>
+			</div>
+		
 			<div id="spin-button">spin</div>
 		</div>
 	</body>

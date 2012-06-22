@@ -190,20 +190,20 @@ var gameState = {
                 };
 
 // Canvas.
-var canvasX = 250;
-var canvasY = 250;
+var canvasX = 200;
+var canvasY = 200;
 
 // Wheel positioning.
 var arc = Math.PI / 18.5;
 var context;
-var insideRadius = 175;
-var outsideRadius = 200;
+var insideRadius = 125;
+var outsideRadius = 150;
 var startAngle = 1.5 * Math.PI;
-var textRadius = 184;
+var textRadius = 132;
 
 // Wheel style and content.
 var black = '#000000';
-var fontStyle = 'bold 12px sans-serif';
+var fontStyle = 'bold 15px sans-serif';
 var green = '#006600';
 var lineWidth = 2;
 var red = '#ff0000';
@@ -337,14 +337,14 @@ function draw_wheel() {
     // Draw arrow.
     context.fillStyle = white;
     context.beginPath();
-    context.moveTo(250 - 0, 250 - (outsideRadius + 5));
-    context.lineTo(250 + 0, 250 - (outsideRadius + 5));
-    context.lineTo(250 + 0, 250 - (outsideRadius - 5));
-    context.lineTo(250 + 9, 250 - (outsideRadius - 5));
-    context.lineTo(250 + 0, 250 - (outsideRadius - 13));
-    context.lineTo(250 - 9, 250 - (outsideRadius - 5));
-    context.lineTo(250 - 0, 250 - (outsideRadius - 5));
-    context.lineTo(250 - 0, 250 - (outsideRadius + 5));
+    context.moveTo(200 - 0, 200 - (outsideRadius + 5));
+    context.lineTo(200 + 0, 200 - (outsideRadius + 5));
+    context.lineTo(200 + 0, 200 - (outsideRadius - 5));
+    context.lineTo(200 + 9, 200 - (outsideRadius - 5));
+    context.lineTo(200 + 0, 200 - (outsideRadius - 13));
+    context.lineTo(200 - 9, 200 - (outsideRadius - 5));
+    context.lineTo(200 - 0, 200 - (outsideRadius - 5));
+    context.lineTo(200 - 0, 200 - (outsideRadius + 5));
     context.fill();
   } else {
     alert('Your browser does not support this game! ' +
@@ -375,7 +375,7 @@ function initialize_game() {
     $('#title').remove();
   });
   
-  $('#game-board').fadeIn(100, 'linear');
+  $('#game-table').fadeIn(100, 'linear');
   draw_wheel();
 }
 

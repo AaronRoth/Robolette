@@ -1,0 +1,60 @@
+.thirds-bets {
+  float: left;
+  height: 70px;
+  width: 176px;
+}
+
+body {
+  margin: 0px;
+}
+
+#canvas-wrapper {
+  background: green;
+  float: left;
+  height: 400px;
+  width: 400px;
+}
+
+#game-board {
+  background: #00a200;
+  float: left;
+  height: 350px;
+  margin: 32px 0px 0px 0px;
+  text-align: center;
+  width: 616px;
+}
+
+#game-table {
+  background: #00c400;
+  margin: auto;
+  width: 1024px;
+}
+
+.num-bets {
+  float: left;
+  height: 70px;
+  width: 44px;
+}
+
+#num-bets-area {
+  height: 210px;
+  width: 616px;
+}
+
+.other-bets {
+  float: left;
+  height: 70px;
+  width: 88px;
+}
+
+#other-bets-area {
+  height: 140px;
+  margin: 0px 44px 0px 44px;
+  width: 528px;
+}
+
+#zero-bet {
+  float: left;
+  height: 210px;
+  width: 44px;
+}
