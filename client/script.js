@@ -11,156 +11,204 @@
 // Game state object.
 var gameState = {
                   "bank": 0,
-                  "bets": [
-                    {
+                  "bets": {
+                    "bet-0": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-1": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-2": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-3": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-4": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-5": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-6": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-7": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-8": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-9": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-10": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-11": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-12": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-13": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-14": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-15": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-16": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-17": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-18": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-19": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-20": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-21": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-22": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-23": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-24": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-25": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-26": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-27": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-28": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-29": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-30": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-31": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-32": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-33": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-34": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-35": {
                       "team1": 0,
                       "team2": 0
                     },
-                    {
+                    "bet-36": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-3to36": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-2to35": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-1to34": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-1st12": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-2nd12": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-3rd12": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-1to18": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-even": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-red": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-black": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-odd": {
+                      "team1": 0,
+                      "team2": 0
+                    },
+                    "bet-19to36": {
                       "team1": 0,
                       "team2": 0
                     }
-                  ],
+                  },
                   "chips": {
                     "team1": 0,
                     "team2": 0
@@ -189,7 +237,7 @@ var gameState = {
                     "color": "",
                     "number": 0
                   }
-                };
+};
 
 // Canvas.
 var canvasX = 200;
@@ -436,4 +484,10 @@ function stop_wheel() {
 
 function update_board(clickedObject) {
   var clickedId = clickedObject.id;
+  
+  if (gameState['state']['undo'] == 1) {
+    alert('will undo bet');
+  } else {
+    alert('will not undo bet');
+  }
 }
