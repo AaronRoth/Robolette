@@ -10,7 +10,6 @@
 
 // Game state object.
 var gameState = {
-                  "bank": 0,
                   "bets": {
                     "bet-0": {
                       "team1": 0,
@@ -276,61 +275,67 @@ $(document).ready(function() {
   $('#start-button').click(initialize_game);
   
   // Make team 1 the current player.
-  $('#team1').click(function() {
+  $('#team1-chips').click(function() {
+    if (gameState['state']['undo'] == 1) {
+      if (gameState['state']['player'] == 'team2') {
+        $('#team2-undo-flag').remove();
+        gameState['state']['undo'] = 0;
+      }
+    }
+    
     gameState['state']['player'] = 'team1';
-    gameState['state']['undo'] = 0;
   });
   
   // Make team 2 the current player.
-  $('#team2').click(function() {
+  $('#team2-chips').click(function() {
+    if (gameState['state']['undo'] == 1) {
+      if (gameState['state']['player'] == 'team1') {
+        $('#team1-undo-flag').remove();
+        gameState['state']['undo'] = 0;
+      }
+    }
+    
     gameState['state']['player'] = 'team2';
-    gameState['state']['undo'] = 0;
   });
   
   // Make or undo bets.
   $('#game-board').click(function(event) {
     if (gameState['state']['changes'] == 1) {
-      update_board(event.target);
+      update_board_model(event.target);
     } else {
       alert('Cannot make or undo bets right now!');
     }
   });
   
-  $('#spin-button').click(spin);
+  // Spin the roulette wheel.
+  $('#spin-button').live('click', function() {
+    spin();
+  });
   
-  // if wheel spin action is made
-      // call spin function
-          // on spin stop,
-              // set changes state in gameboard state to 0
-              // set spins state in gameboard state to 0
-              // call update view function
-              // call determine outcome function
-      
-  // if undo button clicked,
-      // set boardstatechange global var = 0
-          // give some kind of visual indication that undo state is on
-          // allow that visual indicator to be clicked to set boardstatechange global var = 1
+  // Turn on undo a bet mode.
+  $('#undo').live('click', function() {
+    undo();
+  });
+  
+  // Turn off undo a bet mode from player 1.
+  $('#team1-undo-flag').live('click', function() {
+    gameState['state']['undo'] = 0;
+    $(this).remove();
+  });
+  
+  // Turn off undo a bet mode from player 2.
+  $('#team2-undo-flag').live('click', function() {
+    gameState['state']['undo'] = 0;
+    $(this).remove();
+  });
+  
+  // Reset the entire game.
+  $('#reset').live('click', function() {
+    window.location.reload();
+  });
 
-  // if reset game button is clicked
-      // reload entire page
-  
-  // update board state function
-      // check for several states
-          // DELETING (if boardstatechange global var == 0)
-              // if current player has any bets on clicked bet number
-                  // decrement that bet number by 1 bet amount for current player in the board state model
-                  // decrement totals var by 1 in model for that player
-                  // increment chip count for current player by 1
-              // else provide feedback that current player has no bet on clicked bet number
-          // ADDING (if boardstatechange global var == 1)
-              // if current player has more chips to bet with
-                  // increment bet number clicked on by 1 bet amount for current player in the board state model
-                  // increment totals var by 1 in model for that player
-                  // decrement chip count for current player by 1
-              // else provide feedback that no more chips are left
-      // finally "view" needs to ask the model for the current board state
-          // call update view function
-  
+  // freeze_board function
+
   // update view function
       // update entire page "view" elements by looking at the current board state
   
@@ -351,6 +356,10 @@ $(document).ready(function() {
           // state
       // call update view function
 });
+
+function determine_outcome(winningBet) {
+  alert('Determines outcome for the winning bet: ' + winningBet + '. Still needs defining.');
+}
 
 function draw_wheel() {
   var canvas = document.getElementById('wheel');
@@ -424,14 +433,22 @@ function ease_out(t, b, c, d) {
   return b + c * (tc + -3 * ts + 3 * t);
 }
 
+function freeze_board() {
+  gameState['state']['changes'] = 0;
+  gameState['state']['spins'] = 0;
+  
+  alert('Freeze board. Still needs defining.');
+}
+
 function initialize_game() {
   var startBank = $('#starting-bank').val();
   var minBet = $('#min-bet').val();
   var maxBet = $('#max-bet').val();
   
-  gameState["bank"] = startBank;
-  gameState["min"] = minBet;
-  gameState["max"] = maxBet;
+  gameState['chips']['team1'] = startBank;
+  gameState['chips']['team2'] = startBank;
+  gameState['min'] = minBet;
+  gameState['max'] = maxBet;
   
   $('#form').fadeOut(100, 'linear', function() {
     $('#form').remove();
@@ -441,6 +458,7 @@ function initialize_game() {
   });
   
   $('#game-table').fadeIn(100, 'linear');
+  
   draw_wheel();
 }
 
@@ -467,7 +485,9 @@ function spin() {
 }
 
 function stop_wheel() {
+  // Stop the wheel and freeze all input.
   clearTimeout(spinTimeout);
+  freeze_board();
   
   // Calculate what number the ball landed on.
   var radiansSpun = startAngle - (1.5 * Math.PI);
@@ -479,15 +499,67 @@ function stop_wheel() {
   var index = 37 - number;
   context.save();
   var winningNumber = numbers[index];
-  alert('The winning number is ' + winningNumber + '!');
+  
+  // Determine winners and update the view.
+  determine_outcome(winningNumber);
+  update_view();
 }
 
-function update_board(clickedObject) {
-  var clickedId = clickedObject.id;
-  
-  if (gameState['state']['undo'] == 1) {
-    alert('will undo bet');
-  } else {
-    alert('will not undo bet');
+function undo() {
+  if (gameState['state']['undo'] == 0) {
+    gameState['state']['undo'] = 1;
+
+    currentPlayer = gameState['state']['player'];
+
+    if (currentPlayer == 'team1') {
+      $('#team1-chips').append('<div id=\"team1-undo-flag\">stop undo</div>');
+    } else if (currentPlayer == 'team2') {
+      $('#team2-chips').append('<div id=\"team2-undo-flag\">stop undo</div>');
+    } else {
+      alert('No bets have been made.');
+    }
   }
+}
+
+function update_board_model(clickedObject) {
+  var clickedID = clickedObject.id;
+  var currentPlayer = gameState['state']['player'];
+  var currentPlayerBets = gameState['bets'][clickedID][currentPlayer];
+  var maxBet = gameState['max'];
+  var totalPlayerBets = gameState['totals'][currentPlayer];
+  var totalPlayerChips = gameState['chips'][currentPlayer];
+  
+  if (currentPlayer == 'none') {
+    alert('Please select a player.');
+  } else {
+    // Add a bet.
+    if (gameState['state']['undo'] == 0 && totalPlayerBets < maxBet) {
+      if (totalPlayerChips > 0) {
+        gameState['bets'][clickedID][currentPlayer] = currentPlayerBets + 1;
+        gameState['totals'][currentPlayer] = totalPlayerBets + 1;
+        gameState['chips'][currentPlayer] = totalPlayerChips - 1;
+      } else {
+        alert('No more chips to make the bet.');
+      }
+    } else if (gameState['state']['undo'] == 1) {
+      // Undo a bet.
+      if (currentPlayerBets > 0 && totalPlayerBets > 0) {
+        gameState['bets'][clickedID][currentPlayer] = currentPlayerBets - 1;
+        gameState['totals'][currentPlayer] = totalPlayerBets - 1;
+        gameState['chips'][currentPlayer] = totalPlayerChips + 1;
+      } else if (totalPlayerBets > 0) {
+        alert('No bet to remove on this spot.');
+      } else {
+        alert('Player has no bets to remove.');
+      }
+    } else if (totalPlayerBets == maxBet) {
+      alert('Maximum number of bets have been made.');
+    }
+  }
+  
+  update_view();
+}
+
+function update_view() {
+  alert('Update view. Still needs defining.');
 }

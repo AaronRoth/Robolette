@@ -1,7 +1,10 @@
 #bet-0 {
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
   float: left;
-  height: 210px;
-  width: 44px;
+  height: 208px;
+  width: 40px;
 }
 
 body {
@@ -37,44 +40,86 @@ body {
 }
 
 .num-bets {
+  border-right: 2px solid #ffffff;;
+  border-top: 2px solid #ffffff;
   float: left;
-  height: 70px;
-  width: 44px;
+  height: 68px;
+  width: 42px;
 }
 
 #num-bets-area {
-  height: 210px;
+  border-bottom: 2px solid #ffffff;
+  height: 208px;
   width: 616px;
 }
 
+#options {
+  background: cyan;
+}
+
 .other-bets {
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
   float: left;
   height: 70px;
-  width: 88px;
+  width: 86px;
 }
 
 #other-bets-area {
+  border-left: 2px solid #ffffff;
   height: 140px;
-  margin: 0px 44px 0px 44px;
+  margin: 0px 42px 0px 42px;
   width: 528px;
 }
 
-#team1 {
+#score-board {
+  float: left;
+  height: 100px;
+  width: 200px;
+}
+
+#team1-chips {
   background: blue;
   float: left;
   height: 100px;
   width: 100px;
 }
 
-#team2 {
+#team1-score {
+  background: blue;
+  float: left;
+  height: 100px;
+  width: 100px;
+}
+
+#team1-undo-flag {
+  background: red;
+  display: block;
+}
+
+#team2-chips {
   background: yellow;
   float: left;
   height: 100px;
   width: 100px;
 }
 
-.thirds-bets {
+#team2-score {
+  background: yellow;
   float: left;
-  height: 70px;
-  width: 176px;
+  height: 100px;
+  width: 100px;
+}
+
+#team2-undo-flag {
+  background: red;
+  display: block;
+}
+
+.thirds-bets {
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  float: left;
+  height: 66px;
+  width: 174px;
 }
