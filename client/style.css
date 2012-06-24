@@ -1,9 +1,9 @@
 #bet-0 {
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
-  border-top: 2px solid #ffffff;
+  border-left: 4px solid #ffffff;
+  border-right: 4px solid #ffffff;
+  border-top: 4px solid #ffffff;
   float: left;
-  height: 208px;
+  height: 206px;
   width: 40px;
 }
 
@@ -30,7 +30,7 @@ body {
   height: 350px;
   margin: 32px 0px 0px 0px;
   text-align: center;
-  width: 616px;
+  width: 620px;
 }
 
 #game-table {
@@ -40,17 +40,17 @@ body {
 }
 
 .num-bets {
-  border-right: 2px solid #ffffff;;
-  border-top: 2px solid #ffffff;
+  border-right: 4px solid #ffffff;;
+  border-top: 4px solid #ffffff;
   float: left;
-  height: 68px;
-  width: 42px;
+  height: 66px;
+  width: 40px;
 }
 
 #num-bets-area {
-  border-bottom: 2px solid #ffffff;
-  height: 208px;
-  width: 616px;
+  border-bottom: 4px solid #ffffff;
+  height: 206px;
+  width: 620px;
 }
 
 #options {
@@ -58,17 +58,17 @@ body {
 }
 
 .other-bets {
-  border-bottom: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  border-right: 4px solid #ffffff;
   float: left;
-  height: 70px;
-  width: 86px;
+  height: 66px;
+  width: 84px;
 }
 
 #other-bets-area {
-  border-left: 2px solid #ffffff;
+  border-left: 4px solid #ffffff;
   height: 140px;
-  margin: 0px 42px 0px 42px;
+  margin: 0px 42px 0px 44px;
   width: 528px;
 }
 
@@ -117,9 +117,9 @@ body {
 }
 
 .thirds-bets {
-  border-bottom: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  border-right: 4px solid #ffffff;
   float: left;
   height: 66px;
-  width: 174px;
+  width: 172px;
 }
