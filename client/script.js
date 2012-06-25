@@ -523,6 +523,7 @@ function undo() {
 
 function update_board_model(clickedObject) {
   var clickedID = clickedObject.id;
+  alert(clickedID);/*
   var currentPlayer = gameState['state']['player'];
   var currentPlayerBets = gameState['bets'][clickedID][currentPlayer];
   var maxBet = gameState['max'];
@@ -557,7 +558,7 @@ function update_board_model(clickedObject) {
     }
   }
   
-  update_view();
+  update_view();*/
 }
 
 function update_view() {

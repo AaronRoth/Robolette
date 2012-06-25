@@ -1,11 +1,3 @@
-#bet-0 {
-  background: red;
-  float: left;
-  height: 210px;
-  margin-bottom: 9px;
-  width: 44px;
-}
-
 #bet-board {
   height: 350px;
   left: 0px;
@@ -16,106 +8,150 @@
 }
 
 #bet-board-lower {
-  background: magenta;
   height: 131px;
   margin: 0px 35px 0px 46px;
   width: 528px;
 }
 
 #bet-board-upper {
-  background: yellow;
   height: 219px;
   width: 620px;
 }
 
 #bet-spacer-column {
-  background: orange;
   float: right;
   height: 211px;
   width: 44px;
 }
 
 .bet-spacer-column {
-  background: blue;
   height: 70px;
   width: 44px;
 }
 
+.bet-spacer-column:hover {
+  background: #00c400;
+}
+
 .bet-spacer-horizontal-long {
-  background: teal;
   float: left;
   height: 8px;
   width: 40px;
 }
 
+.bet-spacer-horizontal-long:hover {
+  background: #00c400;
+}
+
 .bet-spacer-horizontal-short {
-  background: cyan;
   float: left;
   height: 8px;
   width: 36px;
 }
 
+.bet-spacer-horizontal-short:hover {
+  background: #00c400;
+}
+
 .bet-spacer-other {
-  background: gold;
   float: left;
   height: 70px;
   width: 88px;
 }
 
+.bet-spacer-other:hover {
+  background: #00c400;
+}
+
 .bet-spacer-square {
-  background: brown;
   float: left;
   height: 8px;
   width: 8px;
 }
 
+.bet-spacer-square:hover {
+  background: #00c400;
+}
+
 .bet-spacer-thin-bottom {
-  background: tan;
   float: left;
   height: 64px;
   width: 8px;
 }
 
+.bet-spacer-thin-bottom:hover {
+  background: #00c400;
+}
+
 .bet-spacer-thin-top {
-  background: lime;
   float: left;
   height: 67px;
   width: 8px;
 }
 
+.bet-spacer-thin-top:hover {
+  background: #00c400;
+}
+
 .bet-spacer-thirds {
-  background: tan;
   float: left;
   height: 61px;
   width: 176px;
 }
 
+.bet-spacer-thirds:hover {
+  background: #00c400;
+}
+
 .bet-spacer-wide-bottom {
-  background: orange;
   float: left;
   height: 64px;
   width: 36px;
+}
+
+.bet-spacer-wide-bottom:hover {
+  background: #00c400;
 }
 
 .bet-spacer-wide-end {
-  background: black;
   float: left;
   height: 67px;
   width: 40px;
 }
 
+.bet-spacer-wide-end:hover {
+  background: #00c400;
+}
+
 .bet-spacer-wide-end-bottom {
-  background: grey;
   float: left;
   height: 64px;
   width: 40px;
 }
 
+.bet-spacer-wide-end-bottom:hover {
+  background: #00c400;
+}
+
 .bet-spacer-wide-top {
-  background: teal;
   float: left;
   height: 67px;
   width: 36px;
+}
+
+.bet-spacer-wide-top:hover {
+  background: #00c400;
+}
+
+#bet-straightup-0 {
+  float: left;
+  height: 210px;
+  margin-bottom: 9px;
+  width: 44px;
+}
+
+#bet-straightup-0:hover {
+  background: #00c400;
 }
 
 body {
