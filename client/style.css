@@ -1,10 +1,121 @@
 #bet-0 {
-  border-left: 4px solid #ffffff;
-  border-right: 4px solid #ffffff;
-  border-top: 4px solid #ffffff;
+  background: red;
   float: left;
-  height: 206px;
+  height: 210px;
+  margin-bottom: 9px;
+  width: 44px;
+}
+
+#bet-board {
+  height: 350px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 620px;
+  z-index: 1;
+}
+
+#bet-board-lower {
+  background: magenta;
+  height: 131px;
+  margin: 0px 35px 0px 46px;
+  width: 528px;
+}
+
+#bet-board-upper {
+  background: yellow;
+  height: 219px;
+  width: 620px;
+}
+
+#bet-spacer-column {
+  background: orange;
+  float: right;
+  height: 211px;
+  width: 44px;
+}
+
+.bet-spacer-column {
+  background: blue;
+  height: 70px;
+  width: 44px;
+}
+
+.bet-spacer-horizontal-long {
+  background: teal;
+  float: left;
+  height: 8px;
   width: 40px;
+}
+
+.bet-spacer-horizontal-short {
+  background: cyan;
+  float: left;
+  height: 8px;
+  width: 36px;
+}
+
+.bet-spacer-other {
+  background: gold;
+  float: left;
+  height: 70px;
+  width: 88px;
+}
+
+.bet-spacer-square {
+  background: brown;
+  float: left;
+  height: 8px;
+  width: 8px;
+}
+
+.bet-spacer-thin-bottom {
+  background: tan;
+  float: left;
+  height: 64px;
+  width: 8px;
+}
+
+.bet-spacer-thin-top {
+  background: lime;
+  float: left;
+  height: 67px;
+  width: 8px;
+}
+
+.bet-spacer-thirds {
+  background: tan;
+  float: left;
+  height: 61px;
+  width: 176px;
+}
+
+.bet-spacer-wide-bottom {
+  background: orange;
+  float: left;
+  height: 64px;
+  width: 36px;
+}
+
+.bet-spacer-wide-end {
+  background: black;
+  float: left;
+  height: 67px;
+  width: 40px;
+}
+
+.bet-spacer-wide-end-bottom {
+  background: grey;
+  float: left;
+  height: 64px;
+  width: 40px;
+}
+
+.bet-spacer-wide-top {
+  background: teal;
+  float: left;
+  height: 67px;
+  width: 36px;
 }
 
 body {
@@ -29,8 +140,10 @@ body {
   float: left;
   height: 350px;
   margin: 32px 0px 0px 0px;
+  position: relative;
   text-align: center;
   width: 620px;
+  z-index: 0;
 }
 
 #game-table {
@@ -76,6 +189,15 @@ body {
   float: left;
   height: 100px;
   width: 200px;
+}
+
+#spot-0 {
+  border-left: 4px solid #ffffff;
+  border-right: 4px solid #ffffff;
+  border-top: 4px solid #ffffff;
+  float: left;
+  height: 206px;
+  width: 40px;
 }
 
 #team1-chips {
