@@ -321,10 +321,6 @@ var gameState = {
       "team1": 0,
       "team2": 0
     },
-    "bet-split-19-20": {
-      "team1": 0,
-      "team2": 0
-    },
     "bet-split-22-23": {
       "team1": 0,
       "team2": 0
@@ -657,9 +653,5 @@ var gameState = {
   "totals": {
     "team1": 0,
     "team2": 0
-  },
-  "wheel": {
-    "color": "",
-    "number": 0
   }
 };

@@ -22,6 +22,44 @@ var textRadius = 132;
 
 // Wheel style and content.
 var black = '#000000';
+var numberColors = {
+  "1": "red",
+  "2": "black",
+  "3": "red",
+  "4": "black",
+  "5": "red",
+  "6": "black",
+  "7": "red",
+  "8": "black",
+  "9": "red",
+  "10": "black",
+  "11": "black",
+  "12": "red",
+  "13": "black",
+  "14": "red",
+  "15": "black",
+  "16": "red",
+  "17": "black",
+  "18": "red",
+  "19": "red",
+  "20": "black",
+  "21": "red",
+  "22": "black",
+  "23": "red",
+  "24": "black",
+  "25": "red",
+  "26": "black",
+  "27": "red",
+  "28": "black",
+  "29": "black",
+  "30": "red",
+  "31": "black",
+  "32": "red",
+  "33": "black",
+  "34": "red",
+  "35": "black",
+  "36": "red"
+};
 var fontStyle = 'bold 15px sans-serif';
 var green = '#006600';
 var lineWidth = 2;
@@ -106,26 +144,159 @@ $(document).ready(function() {
 
   // freeze_board function
   
-  // determine outcome function
-      // update wheel color and wheel number in model (basically update winning color and number)
-      // visit all winning bet locations
-          // if totals for team1 >= min bet
-              // drinks["team2"] += number of bets by team1 on that bet
-          // if totals for team2 >= min bet
-              // drinks["team1"] += number of bets by team2 on that bet
-      // update scoreboard
-      // send drink counts for each team to database
-      // reset all temporary values in the model
-          // bets
-          // totals
-          // drinks
-          // wheel
-          // state
-      // call update view function
 });
 
-function determine_outcome(winningBet) {
-  alert('Determines outcome for the winning bet: ' + winningBet + '. Still needs defining.');
+// determine outcome function
+    // update wheel color and wheel number in model (basically update winning color and number)
+    // visit all winning bet locations
+        // if totals for team1 >= min bet
+            // drinks["team2"] += number of bets by team1 on that bet
+        // if totals for team2 >= min bet
+            // drinks["team1"] += number of bets by team2 on that bet
+    // update scoreboard
+    // send drink counts for each team to database
+    // reset all temporary values in the model
+        // bets
+        // totals
+        // drinks
+        // wheel
+        // state
+    // call update view function
+
+function determine_outcome(winningNumber) {
+  var winningBets = determine_winning_bets(0); // remove this hard coded 0 with 'winningNumber'
+  
+  $.each(winningBets, function(index, value) {
+    var betToCheck = 'bet-' + value;
+    
+    if (gameState['totals']['team1'] >= gameState['min']) {
+      gameState['drinks']['team2'] = gameState['drinks']['team2'] + 1;
+    }
+    
+    if (gameState['totals']['team2'] >= gameState['min']) {
+      gameState['drinks']['team1'] = gameState['drinks']['team1'] + 1;
+    }
+  });
+}
+
+function determine_winning_bets(winningNumber) {
+  switch (winningNumber) {
+    case 0:
+      var winningBets = ['straightup-0', 'split-0-1', 'split-0-2', 'split-0-3',
+                         'basket-0-2-3', 'basket-0-1-2', 'corner-0-1-2-3'];
+      return winningBets;
+    case 1:
+      var winningBets = ['straightup-1', 'split-0-1', 'split-1-12', 'split-1-4',
+                         'street-1-2-3', 'corner-0-1-2-3', 'basket-0-1-2',
+                         'corner-1-2-4-5', 'sixline-1-2-3-4-5-6', 'column-1st',
+                         'dozen-1st', 'half-1to18', 'other-odd', 'other-red'];
+      return winningBets;
+    case 2:
+      var winningBets = [];
+      return winningBets;
+    case 3:
+      var winningBets = [];
+      return winningBets;
+    case 4:
+      var winningBets = [];
+      return winningBets;
+    case 5:
+      var winningBets = [];
+      return winningBets;
+    case 6:
+      var winningBets = [];
+      return winningBets;
+    case 7:
+      var winningBets = [];
+      return winningBets;
+    case 8:
+      var winningBets = [];
+      return winningBets;
+    case 9:
+      var winningBets = [];
+      return winningBets;
+    case 10:
+      var winningBets = [];
+      return winningBets;
+    case 11:
+      var winningBets = [];
+      return winningBets;
+    case 12:
+      var winningBets = [];
+      return winningBets;
+    case 13:
+      var winningBets = [];
+      return winningBets;
+    case 14:
+      var winningBets = [];
+      return winningBets;
+    case 15:
+      var winningBets = [];
+      return winningBets;
+    case 16:
+      var winningBets = [];
+      return winningBets;
+    case 17:
+      var winningBets = [];
+      return winningBets;
+    case 18:
+      var winningBets = [];
+      return winningBets;
+    case 19:
+      var winningBets = [];
+      return winningBets;
+    case 20:
+      var winningBets = [];
+      return winningBets;
+    case 21:
+      var winningBets = [];
+      return winningBets;
+    case 22:
+      var winningBets = [];
+      return winningBets;
+    case 23:
+      var winningBets = [];
+      return winningBets;
+    case 24:
+      var winningBets = [];
+      return winningBets;
+    case 25:
+      var winningBets = [];
+      return winningBets;
+    case 26:
+      var winningBets = [];
+      return winningBets;
+    case 27:
+      var winningBets = [];
+      return winningBets;
+    case 28:
+      var winningBets = [];
+      return winningBets;
+    case 29:
+      var winningBets = [];
+      return winningBets;
+    case 30:
+      var winningBets = [];
+      return winningBets;
+    case 31:
+      var winningBets = [];
+      return winningBets;
+    case 32:
+      var winningBets = [];
+      return winningBets;
+    case 33:
+      var winningBets = [];
+      return winningBets;
+    case 34:
+      var winningBets = [];
+      return winningBets;
+    case 35:
+      var winningBets = [];
+      return winningBets;
+    case 36:
+      var winningBets = [];
+      return winningBets;
+  }
 }
 
 function draw_wheel() {
