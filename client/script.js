@@ -105,9 +105,6 @@ $(document).ready(function() {
   });
 
   // freeze_board function
-
-  // update view function
-      // update entire page "view" elements by looking at the current board state
   
   // determine outcome function
       // update wheel color and wheel number in model (basically update winning color and number)
@@ -220,6 +217,9 @@ function initialize_game() {
   gameState['min'] = minBet;
   gameState['max'] = maxBet;
   
+  $('#num-chips-team1').text(startBank);
+  $('#num-chips-team2').text(startBank);
+  
   $('#form').fadeOut(100, 'linear', function() {
     $('#form').remove();
   });
@@ -293,9 +293,6 @@ function undo() {
 
 function update_board_model(clickedObject) {
   var clickedID = clickedObject.id;
-  
-  alert(gameState['bets'][clickedID]['team1']);
-  /*
   var currentPlayer = gameState['state']['player'];
   var currentPlayerBets = gameState['bets'][clickedID][currentPlayer];
   var maxBet = gameState['max'];
@@ -330,9 +327,26 @@ function update_board_model(clickedObject) {
     }
   }
   
-  update_view();*/
+  update_view();
 }
 
 function update_view() {
-  alert('Update view. Still needs defining.');
+  var bets = gameState['bets'];
+  
+  // Update bets.
+  for (var bet in bets) {
+    if (bets.hasOwnProperty(bet)) {
+      $('#' + bet).empty();
+      $('#' + bet).append('<div class="token">' + gameState['bets'][bet]['team1'] + '</div>');
+      $('#' + bet).append('<div class="token">' + gameState['bets'][bet]['team2'] + '</div>');
+    }
+  }
+  
+  // Update chips.
+  $('#num-chips-team1').text(gameState['chips']['team1']);
+  $('#num-chips-team2').text(gameState['chips']['team2']);
+  
+  // Update scores.
+  $('#team1-score').text(gameState['scores']['team1']);
+  $('#team2-score').text(gameState['scores']['team2']);
 }
