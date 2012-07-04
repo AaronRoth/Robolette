@@ -220,13 +220,21 @@ function determine_winning_bets(winningNumber) {
                          'dozen-1st', 'half-1to18', 'other-even', 'other-black'];
       return winningBets;
     case 7:
-      var winningBets = [];
+      var winningBets = ['straightup-7', 'split-4-7', 'split-7-8', 'split-7-10',
+                         'street-7-8-9', 'sixline-4-5-6-7-8-9','corner-4-5-7-8',
+                         'corner-7-8-10-11', 'sixline-7-8-9-10-11-12', 'column-1st',
+                         'dozen-1st', 'half-1to18', 'other-odd', 'other-red'];
       return winningBets;
     case 8:
-      var winningBets = [];
+      var winningBets = ['straightup-8', 'split-5-8', 'split-8-9', 'split-8-11',
+                         'split-7-8', 'corner-4-5-7-8', 'corner-5-6-8-9',
+                         'corner-8-9-11-12', 'corner-7-8-10-11', 'column-2nd',
+                         'dozen-1st', 'half-1to18', 'other-even', 'other-black'];
       return winningBets;
     case 9:
-      var winningBets = [];
+      var winningBets = ['straightup-9', 'split-6-9', 'split-9-12', 'split-8-9',
+                         'corner-5-6-8-9', 'corner-8-9-11-12', 'column-3rd',
+                         'dozen-1st', 'half-1to18', 'other-odd', 'other-red'];
       return winningBets;
     case 10:
       var winningBets = [];
