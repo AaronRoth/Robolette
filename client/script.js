@@ -257,13 +257,25 @@ function determine_winning_bets(winningNumber) {
                          'half-1to18', 'other-even', 'other-red'];
       return winningBets;
     case 13:
-      var winningBets = [];
+      var winningBets = ['straightup-13', 'split-10-13', 'split-13-14',
+                         'split-13-16', 'street-13-14-15',
+                         'sixline-10-11-12-13-14-15', 'corner-10-11-13-14',
+                         'corner-13-14-16-17', 'sixline-13-14-15-16-17-18',
+                         'column-1st', 'dozen-2nd', 'half-1to18',
+                         'other-odd', 'other-black'];
       return winningBets;
     case 14:
-      var winningBets = [];
+      var winningBets = ['straightup-14', 'split-11-12', 'split-14-15',
+                         'split-14-17', 'split-13-14', 'corner-10-11-13-14',
+                         'corner-11-12-14-15', 'corner-14-15-17-18',
+                         'corner-13-14-16-17', 'column-2nd', 'dozen-2nd',
+                         'half-1to18', 'other-even', 'other-red'];
       return winningBets;
     case 15:
-      var winningBets = [];
+      var winningBets = ['straightup-15', 'split-12-15', 'split-15-18',
+                         'split-14-15', 'corner-11-12-14-15',
+                         'corner-14-15-17-18', 'column-3rd', 'dozen-2nd',
+                         'half-1to18', 'other-odd', 'other-black'];
       return winningBets;
     case 16:
       var winningBets = [];
