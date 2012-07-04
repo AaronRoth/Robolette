@@ -22,44 +22,6 @@ var textRadius = 132;
 
 // Wheel style and content.
 var black = '#000000';
-var numberColors = {
-  "1": "red",
-  "2": "black",
-  "3": "red",
-  "4": "black",
-  "5": "red",
-  "6": "black",
-  "7": "red",
-  "8": "black",
-  "9": "red",
-  "10": "black",
-  "11": "black",
-  "12": "red",
-  "13": "black",
-  "14": "red",
-  "15": "black",
-  "16": "red",
-  "17": "black",
-  "18": "red",
-  "19": "red",
-  "20": "black",
-  "21": "red",
-  "22": "black",
-  "23": "red",
-  "24": "black",
-  "25": "red",
-  "26": "black",
-  "27": "red",
-  "28": "black",
-  "29": "black",
-  "30": "red",
-  "31": "black",
-  "32": "red",
-  "33": "black",
-  "34": "red",
-  "35": "black",
-  "36": "red"
-};
 var fontStyle = 'bold 15px sans-serif';
 var green = '#006600';
 var lineWidth = 2;
@@ -142,35 +104,16 @@ $(document).ready(function() {
     window.location.reload();
   });
 
+  // NOT DONE YET!!!!!!!!
   // freeze_board function
   
 });
 
-// determine outcome function
-    // update wheel color and wheel number in model (basically update winning color and number)
-    // visit all winning bet locations
-        // if totals for team1 >= min bet
-            // drinks["team2"] += number of bets by team1 on that bet
-        // if totals for team2 >= min bet
-            // drinks["team1"] += number of bets by team2 on that bet
-    // update scoreboard
-    // send drink counts for each team to database
-    // reset all temporary values in the model
-        // bets
-        // totals
-        // drinks
-        // wheel
-        // state
-    // call update view function
-
 function determine_outcome(winningNumber) {
   winningBets = determine_winning_bets(parseInt(winningNumber));
   
-  alert(winningBets);
-  
   $.each(winningBets, function(index, value) {
     var betToCheck = 'bet-' + value;
-    alert(betToCheck);
     var betsTeam1 = gameState['bets'][betToCheck]['team1'];
     var betsTeam2 = gameState['bets'][betToCheck]['team2'];
     
@@ -182,6 +125,18 @@ function determine_outcome(winningNumber) {
       gameState['drinks']['team1'] = gameState['drinks']['team1'] + betsTeam2;
     }
   });
+  
+  update_view();
+  
+  // send drink counts for each team to database
+  
+  // reset all temporary values in the model
+      // bets
+      // totals
+      // drinks
+      // state
+  
+  update_view();
 }
 
 function determine_winning_bets(winningNumber) {
@@ -390,7 +345,7 @@ function determine_winning_bets(winningNumber) {
                      'half-19to36', 'other-even', 'other-red'];
       return winningBets;
     case 31:
-      winningBets = ['straightup-31', 'split-28-30', 'split-31-32',
+      winningBets = ['straightup-31', 'split-28-31', 'split-31-32',
                      'split-31-34', 'street-31-32-33',
                      'sixline-28-29-30-31-32-33', 'corner-28-29-31-32',
                      'corner-31-32-34-35', 'sixline-31-32-33-34-35-36',

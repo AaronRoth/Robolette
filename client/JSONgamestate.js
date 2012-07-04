@@ -273,7 +273,7 @@ var gameState = {
       "team1": 0,
       "team2": 0
     },
-    "bet-spit-20-23": {
+    "bet-split-20-23": {
       "team1": 0,
       "team2": 0
     },
@@ -537,7 +537,7 @@ var gameState = {
       "team1": 0,
       "team2": 0
     },
-    "bet-sixline-7-8-910-11-12": {
+    "bet-sixline-7-8-9-10-11-12": {
       "team1": 0,
       "team2": 0
     },
