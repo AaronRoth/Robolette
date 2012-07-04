@@ -186,25 +186,38 @@ function determine_winning_bets(winningNumber) {
                          'basket-0-2-3', 'basket-0-1-2', 'corner-0-1-2-3'];
       return winningBets;
     case 1:
-      var winningBets = ['straightup-1', 'split-0-1', 'split-1-12', 'split-1-4',
+      var winningBets = ['straightup-1', 'split-0-1', 'split-1-2', 'split-1-4',
                          'street-1-2-3', 'corner-0-1-2-3', 'basket-0-1-2',
                          'corner-1-2-4-5', 'sixline-1-2-3-4-5-6', 'column-1st',
                          'dozen-1st', 'half-1to18', 'other-odd', 'other-red'];
       return winningBets;
     case 2:
-      var winningBets = [];
+      var winningBets = ['straightup-2', 'split-0-2', 'split-2-3', 'split-2-5',
+                         'split-1-2', 'basket-0-1-2', 'basket-0-2-3',
+                         'corner-2-3-5-6', 'corner-1-2-4-5', 'column-2nd',
+                         'dozen-1st', 'half-1to18', 'other-even', 'other-black'];
       return winningBets;
     case 3:
-      var winningBets = [];
+      var winningBets = ['straightup-3', 'split-0-3', 'split-3-6', 'split-2-3',
+                         'basket-0-2-3', 'corner-2-3-5-6', 'column-3rd',
+                         'dozen-1st', 'half-1to18', 'other-odd', 'other-red'];
       return winningBets;
     case 4:
-      var winningBets = [];
+      var winningBets = ['straightup-4', 'split-1-4', 'split-4-5', 'split-4-7',
+                         'street-4-5-6', 'sixline-1-2-3-4-5-6', 'corner-1-2-4-5',
+                         'corner-4-5-7-8', 'sixline-4-5-6-7-8-9', 'column-1st',
+                         'dozen-1st', 'half-1to18', 'other-even', 'other-black'];
       return winningBets;
     case 5:
-      var winningBets = [];
+      var winningBets = ['straightup-5', 'split-2-5', 'split-5-6', 'split-5-8',
+                         'split-4-5', 'corner-1-2-4-5', 'corner-2-3-5-6',
+                         'corner-5-6-8-9', 'corner-4-5-7-8', 'column-2nd',
+                         'dozen-1st', 'half-1to18', 'other-odd', 'other-red'];
       return winningBets;
     case 6:
-      var winningBets = [];
+      var winningBets = ['straightup-6', 'split-5-6', 'split-6-9', 'split-5-6',
+                         'corner-2-3-5-6', 'corner-5-6-8-9', 'column-3rd',
+                         'dozen-1st', 'half-1to18', 'other-even', 'other-black'];
       return winningBets;
     case 7:
       var winningBets = [];
