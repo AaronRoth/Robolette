@@ -404,13 +404,21 @@ function determine_winning_bets(winningNumber) {
                          'half-19to36', 'other-odd', 'other-black'];
       return winningBets;
     case 34:
-      var winningBets = [];
+      var winningBets = ['straightup-34', 'split-31-34', 'split-34-35',
+                         'street-34-35-36', 'sixline-31-32-33-34-35-36',
+                         'corner-31-32-34-35', 'column-1st', 'dozen-3rd',
+                         'half-19to36', 'other-even', 'other-red'];
       return winningBets;
     case 35:
-      var winningBets = [];
+      var winningBets = ['straightup-35', 'split-32-35', 'split-35-36',
+                         'split-34-35', 'corner-31-32-34-35',
+                         'corner-32-33-35-36', 'column-2nd', 'dozen-3rd',
+                         'half-19to36', 'other-odd', 'other-black'];
       return winningBets;
     case 36:
-      var winningBets = [];
+      var winningBets = ['straightup-36', 'split-33-36', 'split-35-36',
+                         'corner-32-33-35-36', 'column-3rd', 'dozen-3rd',
+                         'half-19to36', 'other-even', 'other-red'];
       return winningBets;
   }
 }
