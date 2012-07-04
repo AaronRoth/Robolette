@@ -320,22 +320,46 @@ function determine_winning_bets(winningNumber) {
                          'half-19to36', 'other-odd', 'other-red'];
       return winningBets;
     case 22:
-      var winningBets = [];
+      var winningBets = ['straightup-22', 'split-19-20', 'split-22-23',
+                         'split-22-25', 'street-22-23-24',
+                         'sixline-19-20-21-22-23-24', 'corner-19-20-22-23',
+                         'corner-22-23-25-26', 'sixline-22-23-24-25-26-27',
+                         'column-1st', 'dozen-2nd', 'half-19to36',
+                         'other-even', 'other-black'];
       return winningBets;
     case 23:
-      var winningBets = [];
+      var winningBets = ['straightup-23', 'split-20-23', 'split-23-24',
+                         'split-23-26', 'split-22-23', 'corner-19-20-22-23',
+                         'corner-20-21-23-24', 'corner-23-24-26-27',
+                         'corner-22-23-25-26', 'column-2nd', 'dozen-2nd',
+                         'half-19to36', 'other-odd', 'other-red'];
       return winningBets;
     case 24:
-      var winningBets = [];
+      var winningBets = ['straightup-24', 'split-21-24', 'split-24-27',
+                         'split-23-24', 'corner-20-21-23-24',
+                         'corner-23-24-26-27', 'column-3rd', 'dozen-2nd',
+                         'half-19to36', 'other-even', 'other-black'];
       return winningBets;
     case 25:
-      var winningBets = [];
+      var winningBets = ['straightup-25', 'split-22-25', 'split-25-26',
+                         'split-25-28', 'street-25-26-27',
+                         'sixline-22-23-24-25-26-27', 'corner-22-23-25-26',
+                         'corner-25-26-28-29', 'sixline-25-26-27-28-29-30',
+                         'column-1st', 'dozen-3rd', 'half-19to36',
+                         'other-odd', 'other-red'];
       return winningBets;
     case 26:
-      var winningBets = [];
+      var winningBets = ['straightup-26', 'split-23-26', 'split-26-27',
+                         'split-26-29', 'split-25-26', 'corner-22-23-25-26',
+                         'corner-23-24-26-27', 'corner-26-27-29-30',
+                         'corner-25-26-28-29', 'column-2nd', 'dozen-3rd',
+                         'half-19to36', 'other-even', 'other-black'];
       return winningBets;
     case 27:
-      var winningBets = [];
+      var winningBets = ['straightup-27', 'split-24-27', 'split-27-30',
+                         'split-26-27', 'corner-23-24-26-27',
+                         'corner-26-27-29-30', 'column-3rd', 'dozen-3rd',
+                         'half-19to36', 'other-odd', 'other-red'];
       return winningBets;
     case 28:
       var winningBets = [];
