@@ -127,6 +127,7 @@ function determine_outcome(winningNumber) {
     }
   });
   
+  // Update view so that the score board will reflect new wins/losses.
   update_view();
   
   var drinksT1 = gameState['drinks']['team1'];
@@ -557,7 +558,7 @@ function stop_wheel() {
   var winningNumber = numbers[index];
   
   // Determine winners and update the view.
-  determine_outcome('3');
+  determine_outcome(winningNumber);
   update_view();
 }
 
