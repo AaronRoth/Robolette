@@ -104,8 +104,9 @@ $(document).ready(function() {
     window.location.reload();
   });
 
-  // NOT DONE YET!!!!!!!!
+  // NOT DONE YET!!!!!!!!!!!!!!!!!!!!
   // freeze_board function
+  // COMPLETE COMPLETE COMPLETE THIS!
   
 });
 
@@ -128,13 +129,41 @@ function determine_outcome(winningNumber) {
   
   update_view();
   
-  // send drink counts for each team to database
+  var drinksT1 = gameState['drinks']['team1'];
+  var drinksT2 = gameState['drinks']['team2'];
   
-  // reset all temporary values in the model
-      // bets
-      // totals
-      // drinks
-      // state
+  // Send drink updates to server.
+  $.ajax({
+    url: 'http://findaaron.nfshost.com/Robolette/php/update_counts.php',
+    type: 'GET',
+    data: {team_one: drinksT1, team_two: drinksT2}
+  });
+  
+  // -------- Reset temporary values in the model -------- //
+  
+  var bets = gameState['bets'];
+  
+  // Reset bet values to zero.
+  for (var bet in bets) {
+    if (bets.hasOwnProperty(bet)) {
+      gameState['bets'][bet]['team1'] = 0;
+      gameState['bets'][bet]['team2'] = 0;
+    }
+  }
+  
+  // Reset drink values to zero.
+  gameState['drinks']['team1'] = 0;
+  gameState['drinks']['team2'] = 0;
+  
+  // Reset bet totals to zero.
+  gameState['totals']['team1'] = 0;
+  gameState['totals']['team2'] = 0;
+  
+  // Reset state values.
+  gameState['state']['changes'] = 1;
+  gameState['state']['player'] = 'none';
+  gameState['state']['spins'] = 1;
+  gameState['state']['undo'] = 0;
   
   update_view();
 }
@@ -528,7 +557,7 @@ function stop_wheel() {
   var winningNumber = numbers[index];
   
   // Determine winners and update the view.
-  determine_outcome(winningNumber);
+  determine_outcome('3');
   update_view();
 }
 
