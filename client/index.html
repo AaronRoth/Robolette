@@ -62,13 +62,22 @@
 		</div>
 		
 		<div id="game-table" style="display: none">
-			<div id="options">
-				<div id="undo">undo bet</div>
-				<div id="reset">reset game</div>
+			<div id="score-area">
+				<div id="score-board">
+					<div id="team1-score">0</div>
+					<div id="team2-score">0</div>
+				</div>
+			</div>
+			
+			<div id="settings-area">
+				<div id="options">
+					<div id="undo">undo bet</div>
+					<div id="reset">reset game</div>
+				</div>
 			</div>
 			
 			<div id="canvas-wrapper">
-				<canvas id="wheel" width="400" height="400"></canvas>
+				<canvas id="wheel" width="374" height="374"></canvas>
 			</div>
 			
 			<div id="game-board">
@@ -302,8 +311,6 @@
 				</div>
 			</div>
 			
-			<div id="spin-button">spin</div>
-			
 			<div id="chip-piles">
 				<div id="team1-chips">
 					<div>team 1 chips</div>
@@ -315,11 +322,8 @@
 					<div id="num-chips-team2"></div>
 				</div>
 			</div>
-			
-			<div id="score-board">
-				<div id="team1-score">0</div>
-				<div id="team2-score">0</div>
-			</div>
 		</div>
+		
+		<div id="spin-button">spin</div>
 	</body>
 </html>

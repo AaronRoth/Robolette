@@ -9,8 +9,8 @@
 // ------------------ Globals ------------------ //
 
 // Canvas.
-var canvasX = 200;
-var canvasY = 200;
+var canvasX = 187;
+var canvasY = 187;
 
 // Wheel positioning.
 var arc = Math.PI / 18.5;
@@ -465,14 +465,14 @@ function draw_wheel() {
     // Draw arrow.
     context.fillStyle = white;
     context.beginPath();
-    context.moveTo(200 - 0, 200 - (outsideRadius + 5));
-    context.lineTo(200 + 0, 200 - (outsideRadius + 5));
-    context.lineTo(200 + 0, 200 - (outsideRadius - 5));
-    context.lineTo(200 + 9, 200 - (outsideRadius - 5));
-    context.lineTo(200 + 0, 200 - (outsideRadius - 13));
-    context.lineTo(200 - 9, 200 - (outsideRadius - 5));
-    context.lineTo(200 - 0, 200 - (outsideRadius - 5));
-    context.lineTo(200 - 0, 200 - (outsideRadius + 5));
+    context.moveTo(187 - 0, 187 - (outsideRadius + 5));
+    context.lineTo(187 + 0, 187 - (outsideRadius + 5));
+    context.lineTo(187 + 0, 187 - (outsideRadius - 5));
+    context.lineTo(187 + 9, 187 - (outsideRadius - 5));
+    context.lineTo(187 + 0, 187 - (outsideRadius - 13));
+    context.lineTo(187 - 9, 187 - (outsideRadius - 5));
+    context.lineTo(187 - 0, 187 - (outsideRadius - 5));
+    context.lineTo(187 - 0, 187 - (outsideRadius + 5));
     context.fill();
   } else {
     alert('Your browser does not support this game! ' +
