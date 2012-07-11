@@ -1,3 +1,7 @@
+.black {
+  background: #000000;
+}
+
 #bet-board {
   height: 350px;
   left: 0px;
@@ -229,6 +233,7 @@ body {
   border-top: 4px solid #ffffff;
   float: left;
   height: 66px;
+  position: relative;
   width: 40px;
 }
 
@@ -236,6 +241,26 @@ body {
   border-bottom: 4px solid #ffffff;
   height: 206px;
   width: 620px;
+}
+
+#number-0-span {
+  top: 93px;
+}
+
+.numbers {
+  color: #ffffff;
+  display: block;
+  float: right;
+  font-family: "Asset";
+  font-size: 10pt;
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  height: 20px;
+  position: absolute;
+  right: -8px;
+  width: 55px;
+  top: 22px;
 }
 
 .other-bets {
@@ -251,6 +276,10 @@ body {
   height: 140px;
   margin: 0px 42px 0px 44px;
   width: 528px;
+}
+
+.red {
+  background: #ff0000;
 }
 
 #score-area {
@@ -277,6 +306,7 @@ body {
   border-top: 4px solid #ffffff;
   float: left;
   height: 206px;
+  position: relative;
   width: 40px;
 }
 
