@@ -250,7 +250,6 @@ body {
 .numbers {
   color: #ffffff;
   display: block;
-  float: right;
   font-family: "Asset";
   font-size: 10pt;
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
@@ -267,12 +266,16 @@ body {
   border-bottom: 4px solid #ffffff;
   border-right: 4px solid #ffffff;
   float: left;
+  font-family: "Asset";
+  font-size: 10pt;
   height: 66px;
   width: 84px;
 }
 
 #other-bets-area {
   border-left: 4px solid #ffffff;
+  color: #ffffff;
+  font-size: 8pt;
   height: 140px;
   margin: 0px 42px 0px 44px;
   width: 528px;
@@ -310,6 +313,13 @@ body {
   width: 40px;
 }
 
+#spot-1, #spot-4, #spot-7,
+#spot-10, #spot-13, #spot-16,
+#spot-19, #spot-22, #spot-25,
+#spot-28, #spot-31, #spot-34 {
+  height: 62px;
+}
+
 #team1-chips {
   float: left;
   height: 54px;
@@ -345,7 +355,10 @@ body {
 .thirds-bets {
   border-bottom: 4px solid #ffffff;
   border-right: 4px solid #ffffff;
+  
   float: left;
+  font-family: "Asset";
+  font-size: 10pt;
   height: 66px;
   width: 172px;
 }
