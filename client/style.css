@@ -250,14 +250,15 @@ body {
 .numbers {
   color: #ffffff;
   display: block;
-  font-family: "Asset";
-  font-size: 10pt;
+  font-family: "Cantata One";
+  font-size: 22pt;
+  font-style: bold;
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   -moz-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   height: 20px;
   position: absolute;
-  right: -8px;
+  right: 0px;
   width: 55px;
   top: 22px;
 }
@@ -266,16 +267,17 @@ body {
   border-bottom: 4px solid #ffffff;
   border-right: 4px solid #ffffff;
   float: left;
-  font-family: "Asset";
-  font-size: 10pt;
-  height: 66px;
+  height: 44px;
+  padding: 22px 0px 0px 0px;
+  padding: ;
   width: 84px;
 }
 
 #other-bets-area {
   border-left: 4px solid #ffffff;
   color: #ffffff;
-  font-size: 8pt;
+  font-family: "Cantata One";
+  font-size: 16pt;
   height: 140px;
   margin: 0px 42px 0px 44px;
   width: 528px;
@@ -355,11 +357,9 @@ body {
 .thirds-bets {
   border-bottom: 4px solid #ffffff;
   border-right: 4px solid #ffffff;
-  
   float: left;
-  font-family: "Asset";
-  font-size: 10pt;
-  height: 66px;
+  height: 44px;
+  padding: 22px 0px 0px 0px;
   width: 172px;
 }
 

@@ -22,7 +22,7 @@ var textRadius = 132;
 
 // Wheel style and content.
 var black = '#000000';
-var fontStyle = 'bold 15px sans-serif';
+var fontStyle = 'bold 15px Arapey';
 var green = '#006600';
 var lineWidth = 2;
 var red = '#ff0000';
