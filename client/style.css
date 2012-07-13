@@ -190,6 +190,10 @@
   height: 58px;
 }
 
+.blue {
+  background: #004574;
+}
+
 body {
   margin: 0px;
 }
@@ -242,6 +246,7 @@ body {
   height: 66px;
   position: relative;
   width: 40px;
+  z-index: -1;
 }
 
 #num-bets-area {
@@ -276,8 +281,9 @@ body {
   float: left;
   height: 44px;
   padding: 22px 0px 0px 0px;
-  padding: ;
+  position: relative;
   width: 84px;
+  z-index: -1;
 }
 
 #other-bets-area {
@@ -330,7 +336,7 @@ body {
 }
 
 #team1-chips {
-  background: #ffe500;
+  background: #004574;
   border: 1px solid #000000;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -359,7 +365,7 @@ body {
 }
 
 #team2-chips {
-  background: #004574;
+  background: #ffe500;
   border: 1px solid #000000;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -393,14 +399,32 @@ body {
   float: left;
   height: 44px;
   padding: 22px 0px 0px 0px;
+  position: relative;
   width: 172px;
+  z-index: -1;
 }
 
 .token {
-  background-color: red;
-  color: #000000;
-  font-size: 10px;
-  height: 10px;
-  margin: auto;
-  width: 10px;
+  border: 1px solid #000000;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  /*
+  -moz-box-shadow: 0 0 1px 1px #005500;
+  -webkit-box-shadow: 0 0 1px 1px #005500;
+  box-shadow: 0 0 1px 1px #005500;
+  */
+  cursor: pointer;
+  float: left;
+  font-size: 10pt;
+  font-weight: bold;
+  height: 20px;
+  line-height: 20px;
+  margin: 0px;
+  padding: 0px 0px 0px 1px;
+  position: absolute;
+  width: 20px;
+}
+
+.yellow {
+  background: #ffe500;
 }
