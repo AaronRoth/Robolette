@@ -39,6 +39,10 @@ var spinTime = 0;
 var spinTimeout = null;
 var spinTimeTotal = 0;
 
+// Other.
+var team1 = 'blue';
+var team2 = 'yellow';
+
 // --------------------------------------------- //
 
 $(document).ready(function() {
@@ -893,7 +897,8 @@ function update_board_model(clickedObject) {
         gameState['totals'][currentPlayer] = totalPlayerBets - 1;
         gameState['chips'][currentPlayer] = totalPlayerChips + 1;
         
-        // MIGHT NEED TO DELETE THIS!
+        // NEED TO ADD UNDO FUNCTIONALITY HERE.
+        
         update_view(gameState['state']['player'], clickedID);
       } else if (totalPlayerBets > 0) {
         alert('No bet to remove on this spot.');
@@ -910,14 +915,15 @@ function update_board_model(clickedObject) {
 function update_chips(chipsT1, chipsT2) {
   $('#team1-chips').empty();
   $('#team2-chips').empty();
+  var parentXMidpoint = 50;
+  var parentYMidpoint = 35;
+  var tokenMid = 10;
   
   var tokenCount = 2;
   for (var i = 0; i < chipsT1; i++) {
     // Calculate vars needed to position chip.
-    var parentMidpoint = 36;
-    var tokenMid = 10;
-    var topVal = parentMidpoint - tokenMid;
-    var leftVal = parentMidpoint - tokenMid;
+    var leftVal = parentXMidpoint - tokenMid;
+    var topVal = parentYMidpoint - tokenMid;
     
     var numChipsPlaced = i;
     if (numChipsPlaced > 0) {
@@ -936,10 +942,8 @@ function update_chips(chipsT1, chipsT2) {
   tokenCount = 2;
   for (var j = 0; j < chipsT2; j++) {
     // Calculate vars needed to position chip.
-    var parentMidpoint = 36;
-    var tokenMid = 10;
-    var topVal = parentMidpoint - tokenMid;
-    var leftVal = parentMidpoint - tokenMid;
+    var leftVal = parentXMidpoint - tokenMid;
+    var topVal = parentYMidpoint - tokenMid;
     
     var numChipsPlaced = j;
     if (numChipsPlaced > 0) {
@@ -954,6 +958,10 @@ function update_chips(chipsT1, chipsT2) {
     
     tokenCount++;
   }
+  
+  // Update chips count display.
+  $('#team1-chips').append('<div class="chip-counts">' + gameState['chips']['team1'] + '</div>');
+  $('#team2-chips').append('<div class="chip-counts">' + gameState['chips']['team2'] + '</div>');
 }
 
 function update_view(player, object) {
