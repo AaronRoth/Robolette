@@ -808,6 +808,37 @@ function initialize_game() {
   draw_wheel();
 }
 
+// Restacks the a stack of chips after one has been removed.
+function restack(betID) {
+  var chipStack = $('#' + betID).children();
+  var parentMidX = $('#' + betID).width() / 2;
+  var parentMidY = $('#' + betID).height() / 2;
+  var tokenMid = 10;
+  var leftVal = parentMidX - tokenMid;
+  var topVal = parentMidY - tokenMid;
+  
+  $('#' + betID).empty();
+  
+  var tokenCount = 2;
+  for (var i = 0; i < chipStack.size(); i++) {
+    var numChipsPlaced = i;
+    
+    if (numChipsPlaced > 0) {
+      topVal = topVal - 2;
+    }
+    
+    var currClass = $(chipStack.get(i)).attr('class');
+    var chip = $('<div class="' + currClass + '"></div>');
+    chip.css('left', leftVal);
+    chip.css('top', topVal);
+    chip.css('z-index', tokenCount);
+    
+    $('#' + betID).append(chip);
+
+    tokenCount++;
+  }
+}
+
 function rotate_wheel() {
   spinTime += 30;
   
@@ -887,6 +918,8 @@ function update_board_model(clickedObject) {
         gameState['chips'][currentPlayer] = totalPlayerChips - 1;
         
         update_view(gameState['state']['player'], clickedID);
+        
+        restack(clickedID);
       } else {
         alert('No more chips to make the bet.');
       }
@@ -897,9 +930,33 @@ function update_board_model(clickedObject) {
         gameState['totals'][currentPlayer] = totalPlayerBets - 1;
         gameState['chips'][currentPlayer] = totalPlayerChips + 1;
         
-        // NEED TO ADD UNDO FUNCTIONALITY HERE.
+        // Calculate some vars needed for undoing.
+        if (currentPlayer == 'team1') {
+          player = 'token ' + team1;
+        } else {
+          player = 'token ' + team2;
+        }
+        var chipsHere = $('#' + clickedID).children();
+        var count = chipsHere.length - 1;
+        var loop = true;
         
-        update_view(gameState['state']['player'], clickedID);
+        // Remove the current player's most recent bet from the clicked bet.
+        while (count >= 0 && loop) {
+          var currChip = $(chipsHere.get(count));
+          
+          if (currChip.attr('class') == player) {
+            $($('#' + clickedID).children().get(count)).remove();
+            loop = false;
+          }
+          
+          count--;
+        }
+        
+        // Straighten the current chip pile.
+        restack(clickedID);
+        
+        // Update the chip pile.
+        update_chips(gameState['chips']['team1'], gameState['chips']['team2']);
       } else if (totalPlayerBets > 0) {
         alert('No bet to remove on this spot.');
       } else {
@@ -962,6 +1019,18 @@ function update_chips(chipsT1, chipsT2) {
   // Update chips count display.
   $('#team1-chips').append('<div class="chip-counts">' + gameState['chips']['team1'] + '</div>');
   $('#team2-chips').append('<div class="chip-counts">' + gameState['chips']['team2'] + '</div>');
+  
+  if (gameState['state']['undo']) {
+    currentPlayer = gameState['state']['player'];
+
+    if (currentPlayer == 'team1') {
+      $('#team1-chips').append('<div id=\"team1-undo-flag\">stop undo</div>');
+    } else if (currentPlayer == 'team2') {
+      $('#team2-chips').append('<div id=\"team2-undo-flag\">stop undo</div>');
+    } else {
+      alert('No bets have been made.');
+    }
+  }
 }
 
 function update_view(player, object) {
