@@ -790,8 +790,7 @@ function initialize_game() {
   gameState['min'] = minBet;
   gameState['max'] = maxBet;
   
-  $('#num-chips-team1').text(startBank);
-  $('#num-chips-team2').text(startBank);
+  update_chips(startBank, startBank);
   
   $('#form').fadeOut(100, 'linear', function() {
     $('#form').remove();
@@ -848,6 +847,7 @@ function stop_wheel() {
   update_view('neither', null);
 }
 
+// SHOULD BE BROKEN CURRENTLY!
 function undo() {
   if (gameState['state']['undo'] == 0) {
     gameState['state']['undo'] = 1;
@@ -892,6 +892,9 @@ function update_board_model(clickedObject) {
         gameState['bets'][clickedID][currentPlayer] = currentPlayerBets - 1;
         gameState['totals'][currentPlayer] = totalPlayerBets - 1;
         gameState['chips'][currentPlayer] = totalPlayerChips + 1;
+        
+        // MIGHT NEED TO DELETE THIS!
+        update_view(gameState['state']['player'], clickedID);
       } else if (totalPlayerBets > 0) {
         alert('No bet to remove on this spot.');
       } else {
@@ -900,6 +903,56 @@ function update_board_model(clickedObject) {
     } else if (totalPlayerBets == maxBet) {
       alert('Maximum number of bets have been made.');
     }
+  }
+}
+
+// Add chips to the table chip piles.
+function update_chips(chipsT1, chipsT2) {
+  $('#team1-chips').empty();
+  $('#team2-chips').empty();
+  
+  var tokenCount = 2;
+  for (var i = 0; i < chipsT1; i++) {
+    // Calculate vars needed to position chip.
+    var parentMidpoint = 36;
+    var tokenMid = 10;
+    var topVal = parentMidpoint - tokenMid;
+    var leftVal = parentMidpoint - tokenMid;
+    
+    var numChipsPlaced = i;
+    if (numChipsPlaced > 0) {
+      topVal = topVal - 2 * numChipsPlaced;
+    }
+    
+    var chipTeam1 = $('<div class="token blue"></div>');
+    chipTeam1.css('left', leftVal);
+    chipTeam1.css('top', topVal);
+    chipTeam1.css('z-index', tokenCount);
+    $('#team1-chips').append(chipTeam1);
+    
+    tokenCount++;
+  }
+  
+  tokenCount = 2;
+  for (var j = 0; j < chipsT2; j++) {
+    // Calculate vars needed to position chip.
+    var parentMidpoint = 36;
+    var tokenMid = 10;
+    var topVal = parentMidpoint - tokenMid;
+    var leftVal = parentMidpoint - tokenMid;
+    
+    var numChipsPlaced = j;
+    if (numChipsPlaced > 0) {
+      topVal = topVal - 2 * numChipsPlaced;
+    }
+    
+    var chipTeam2 = $('<div class="token yellow"></div>');
+    chipTeam2.css('left', leftVal);
+    chipTeam2.css('top', topVal);
+    chipTeam2.css('z-index', tokenCount);
+    $('#team2-chips').append(chipTeam2);
+    
+    tokenCount++;
   }
 }
 
@@ -916,7 +969,6 @@ function update_view(player, object) {
           // Calculate vars needed to position chip.
           var parentMidX = $('#' + bet).width() / 2;
           var parentMidY = $('#' + bet).height() / 2;
-          var newID = 'token' + tokenCount;
           var tokenMid = 10;
           var leftVal = parentMidX - tokenMid;
           var topVal = parentMidY - tokenMid;
@@ -931,7 +983,7 @@ function update_view(player, object) {
           $('#' + bet).css('z-index', '1');
           
           // Add chip to the table.
-          var chip = $('<div class="token blue">' + gameState['bets'][bet]['team1'] + '</div>');
+          var chip = $('<div class="token blue"></div>');
           chip.css('left', leftVal);
           chip.css('top', topVal);
           chip.css('z-index', tokenCount);
@@ -940,14 +992,13 @@ function update_view(player, object) {
           tokenCount++;
         }
       }
-      
+        
       // Show team two's chips on the table.
       if (gameState['bets'][bet]['team2'] > 0 && player == 'team2') {
         if (bet == object) {
           // Calculate vars needed to position chip.
           var parentMidX = $('#' + bet).width() / 2;
           var parentMidY = $('#' + bet).height() / 2;
-          var newID = 'token' + tokenCount;
           var tokenMid = 10;
           var leftVal = parentMidX - tokenMid;
           var topVal = parentMidY - tokenMid;
@@ -962,7 +1013,7 @@ function update_view(player, object) {
           $('#' + bet).css('z-index', '1');
           
           // Add chip to the table.
-          var chip = $('<div class="token yellow">' + gameState['bets'][bet]['team2'] + '</div>');
+          var chip = $('<div class="token yellow"></div>');
           chip.css('left', leftVal);
           chip.css('top', topVal);
           chip.css('z-index', tokenCount);
@@ -974,9 +1025,7 @@ function update_view(player, object) {
     }
   }
   
-  // Update chips.
-  $('#num-chips-team1').text(gameState['chips']['team1']);
-  $('#num-chips-team2').text(gameState['chips']['team2']);
+  update_chips(gameState['chips']['team1'], gameState['chips']['team2']);
   
   // Update scores.
   $('#team1-score').text(gameState['scores']['team1']);

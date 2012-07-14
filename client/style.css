@@ -277,22 +277,11 @@ body {
 }
 
 #team1-chips {
-  background: #004574;
-  border: 1px solid #000000;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-box-shadow: 0 0 1px 1px #005500;
-  -webkit-box-shadow: 0 0 1px 1px #005500;
-  box-shadow: 0 0 1px 1px #005500;
-  cursor: pointer;
   float: left;
-  font-size: 10pt;
-  font-weight: bold;
-  height: 20px;
-  line-height: 20px;
-  margin: 25px 25px 0px 25;
-  padding: 0px 0px 0px 1px;
-  width: 20px;
+  height: 72px;
+  position: relative;
+  width: 72px;
+  z-index: 1;
 }
 
 #team1-score {
@@ -306,22 +295,11 @@ body {
 }
 
 #team2-chips {
-  background: #ffe500;
-  border: 1px solid #000000;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-box-shadow: 0 0 1px 1px #005500;
-  -webkit-box-shadow: 0 0 1px 1px #005500;
-  box-shadow: 0 0 1px 1px #005500;
-  cursor: pointer;
   float: left;
-  font-size: 10pt;
-  font-weight: bold;
-  height: 20px;
-  line-height: 20px;
-  margin: 25px 0px 0px 30;
-  padding: 0px 0px 0px 1px;
-  width: 20px;
+  height: 72px;
+  position: relative;
+  width: 72px;
+  z-index: 1;
 }
 
 #team2-score {
@@ -349,13 +327,7 @@ body {
   border: 1px solid #000000;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  /*
-  -moz-box-shadow: 0 0 1px 1px #005500;
-  -webkit-box-shadow: 0 0 1px 1px #005500;
-  box-shadow: 0 0 1px 1px #005500;
-  */
   cursor: pointer;
-  float: left;
   font-size: 10pt;
   font-weight: bold;
   height: 20px;
