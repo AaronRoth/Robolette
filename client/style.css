@@ -152,11 +152,19 @@ body {
   width: 620px;
 }
 
+.chip-counts {
+  float: left;
+  font-size: 10pt;
+  height: 10px;
+  padding: 24px 0px 0px 4px;
+  width: 10px;
+}
+
 #chip-spot {
   height: 72px;
   margin: auto;
   text-align: center;
-  width: 160px;
+  width: 176px;
 }
 
 #game-board {
@@ -274,9 +282,12 @@ body {
 }
 
 #team1-chips {
+  border-radius: 5px;
+  cursor: pointer;
   float: left;
-  height: 60px;
-  padding: 6px;
+  height: 62px;
+  margin: 6px 0px 0px 8px;
+  padding: 0px 6px 0px 6px;
   position: relative;
   width: 60px;
   z-index: 1;
@@ -288,23 +299,34 @@ body {
   width: 100px;
 }
 
-#team1-undo-flag {
-  display: block;
+#team1-undo-flag, #team2-undo-flag {
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 8pt;
+  left: 13px;
+  line-height: -1;
+  padding: 1px 4px 0px 4px;
+  position: absolute;
+  text-align: left;
+  top: 45px;
+  width: 40px;
 }
 
-.chip-counts {
-  float: left;
-  font-size: 10pt;
-  height: 10px;
-  padding: 18px 0px 0px 4px;
-  width: 10px;
+#team1-undo-flag:hover, #team2-undo-flag:hover {
+  background: #61a793;
+}
+
+.icon-remove-sign {
+  margin: 2px 0px 0px 0px;
 }
 
 #team2-chips {
-  float: left;
-  height: 60px;
-  margin: 0px 0px 0px 16px;
-  padding: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  height: 62px;
+  margin: 6px 8px 0px 0px;
+  padding: 0px 6px 0px 6px;
   position: relative;
   width: 60px;
   z-index: 1;
@@ -314,10 +336,6 @@ body {
   float: left;
   height: 50px;
   width: 100px;
-}
-
-#team2-undo-flag {
-  display: block;
 }
 
 .thirds-bets {

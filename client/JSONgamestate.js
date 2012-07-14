@@ -646,7 +646,7 @@ var gameState = {
   },
   "state": {
     "changes": 1,
-    "player": "none",
+    "player": "team1",
     "spins": 1,
     "undo": 0
   },

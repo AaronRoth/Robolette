@@ -58,6 +58,8 @@ $(document).ready(function() {
     }
     
     gameState['state']['player'] = 'team1';
+    $('#team2-chips').css('background', '#397564');
+    $('#team1-chips').css('background', '#77b3a2');
   });
   
   // Make team 2 the current player.
@@ -70,6 +72,8 @@ $(document).ready(function() {
     }
     
     gameState['state']['player'] = 'team2';
+    $('#team1-chips').css('background', '#397564');
+    $('#team2-chips').css('background', '#77b3a2');
   });
   
   // Make or undo bets.
@@ -794,7 +798,14 @@ function initialize_game() {
   gameState['min'] = minBet;
   gameState['max'] = maxBet;
   
+  // Setup chip area.
   update_chips(startBank, startBank);
+  var currPlayer = gameState['state']['player'];
+  if (currPlayer == 'team1') {
+    $('#team1-chips').css('background', '#77b3a2');
+  } else {
+    $('#team2-chips').css('background', '#77b3a2');
+  }
   
   $('#form').fadeOut(100, 'linear', function() {
     $('#form').remove();
@@ -882,19 +893,23 @@ function stop_wheel() {
   update_view('neither', null);
 }
 
-// SHOULD BE BROKEN CURRENTLY!
 function undo() {
-  if (gameState['state']['undo'] == 0) {
-    gameState['state']['undo'] = 1;
+  if (gameState['totals']['team1'] == 0 &&
+      gameState['totals']['team2'] == 0) {
+        alert('No bets have been made.');
+  } else {
+    if (gameState['state']['undo'] == 0) {
+      gameState['state']['undo'] = 1;
 
-    currentPlayer = gameState['state']['player'];
+      currentPlayer = gameState['state']['player'];
 
-    if (currentPlayer == 'team1') {
-      $('#team1-chips').append('<div id=\"team1-undo-flag\">stop undo</div>');
-    } else if (currentPlayer == 'team2') {
-      $('#team2-chips').append('<div id=\"team2-undo-flag\">stop undo</div>');
-    } else {
-      alert('No bets have been made.');
+      if (currentPlayer == 'team1') {
+        $('#team1-chips').append('<div id=\"team1-undo-flag\">undo <i class=\"icon-remove-sign\"></i></div>');
+      } else if (currentPlayer == 'team2') {
+        $('#team2-chips').append('<div id=\"team2-undo-flag\">undo <i class=\"icon-remove-sign\"></i></div>');
+      } else {
+        alert('No team has been selected to play.');
+      }
     }
   }
 }
@@ -973,7 +988,7 @@ function update_chips(chipsT1, chipsT2) {
   $('#team1-chips').empty();
   $('#team2-chips').empty();
   var parentXMidpoint = 50;
-  var parentYMidpoint = 35;
+  var parentYMidpoint = 30;
   var tokenMid = 10;
   
   var tokenCount = 2;
@@ -1024,9 +1039,9 @@ function update_chips(chipsT1, chipsT2) {
     currentPlayer = gameState['state']['player'];
 
     if (currentPlayer == 'team1') {
-      $('#team1-chips').append('<div id=\"team1-undo-flag\">stop undo</div>');
+      $('#team1-chips').append('<div id=\"team1-undo-flag\">undo</span> <i class=\"icon-remove-sign\"></i></div>');
     } else if (currentPlayer == 'team2') {
-      $('#team2-chips').append('<div id=\"team2-undo-flag\">stop undo</div>');
+      $('#team2-chips').append('<div id=\"team2-undo-flag\">undo <i class=\"icon-remove-sign\"></i></div>');
     } else {
       alert('No bets have been made.');
     }
