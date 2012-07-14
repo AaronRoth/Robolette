@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "digital";
+  src: url(ds-digib.ttf) format("truetype");
+}
+
 .black {
   background: #000000;
 }
@@ -277,8 +282,13 @@ body {
 }
 
 #score-board {
+  color: #ffffff;
   float: left;
+  font-family: "digital";
+  font-size: 38pt;
   height: 50px;
+  margin: auto;
+  text-align: right;
   width: 200px;
 }
 
@@ -346,9 +356,10 @@ body {
 }
 
 #team1-score {
+  background: #1c1e19;
   float: left;
   height: 50;
-  width: 100px;
+  padding: 5px;
 }
 
 #team1-undo-flag, #team2-undo-flag {
@@ -381,9 +392,10 @@ body {
 }
 
 #team2-score {
+  background: #1c1e19;
   float: left;
   height: 50px;
-  width: 100px;
+  padding: 5px;
 }
 
 .thirds-bets {
