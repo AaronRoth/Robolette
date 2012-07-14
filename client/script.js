@@ -397,6 +397,19 @@ $(document).ready(function() {
       }
     }
   );
+  
+  // Show the settings menu.
+  $('#settings-button').click(function() {
+    if ($('#options').css('visibility') == 'hidden') {
+      $('#options').css('visibility', 'visible');
+      $('#settings-menu').css('background', '#77b3a2');
+      
+      $('#settings-menu').unbind();
+      setTimeout(function() {$(document).bind('click.menu', hide_menu);}, 0);
+    } else {
+      hide_menu(event);
+    }
+  });
 
   // NOT DONE YET!!!!!!!!!!!!!!!!!!!!
   // freeze_board function
@@ -779,6 +792,21 @@ function ease_out(t, b, c, d) {
   var tc = ts * t;
   
   return b + c * (tc + -3 * ts + 3 * t);
+}
+
+function hide_menu(event) {
+  var node = event.target;
+  
+  while (node != document) {
+    if (node == $('#options')[0]) {
+      return;
+    }
+    node = node.parentNode;
+  }
+  $(document).unbind('click.menu');
+  $('#options').css('visibility', 'hidden');
+  $('#settings-menu').css('background', '#397564');
+  setTimeout(function() {$('#settings-menu').click(show_menu);}, 0);
 }
 
 function freeze_board() {

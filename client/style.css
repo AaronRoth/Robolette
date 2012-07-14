@@ -167,6 +167,10 @@ body {
   width: 176px;
 }
 
+#cog-wheel {
+  float: right;
+}
+
 #game-board {
   background: #397564;
   float: left;
@@ -182,7 +186,7 @@ body {
   -moz-box-shadow: 0 0 5px 5px #000000;
   -webkit-box-shadow: 0 0 5px 5px #000000;
   box-shadow: 0 0 5px 5px #888888;
-  height: 504px;
+  height: 514px;
   margin: 60px auto 0px auto;
   padding: 0px 30px 0px 0px;
   width: 994px;
@@ -223,6 +227,12 @@ body {
   top: 22px;
 }
 
+#options {
+  font-size: 10pt;
+  height: 40px;
+  visibility: hidden;
+}
+
 .other-bets {
   border-bottom: 4px solid #ffffff;
   border-right: 4px solid #ffffff;
@@ -248,9 +258,21 @@ body {
   background: #ff1a37;
 }
 
+#reset, #undo {
+  border-radius: 5px;
+  cursor: pointer;
+  height: 16px;
+  padding: 2px;
+  width: 97px;
+}
+
+#reset:hover, #undo:hover {
+  background: #8dbfb1;
+}
+
 #score-area {
   float: left;
-  height: 50px;
+  height: 60px;
   width: 374px;
 }
 
@@ -262,8 +284,38 @@ body {
 
 #settings-area {
   float: right;
-  height: 80px;
+  height: 90px;
   width: 620px;
+}
+
+#settings-button {
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14pt;
+  height: 16px;
+  margin: 0px 0px 0px 79px;
+  padding: 2px;
+  width: 18px;
+}
+
+#settings-button:hover {
+  background: #77b3a2;
+}
+
+#settings-menu {
+  border-radius: 5px;
+  float: right;
+  height: 60px;
+  margin: 10px 0px 0px 0px;
+  padding: 5px;
+}
+
+#settings-reset {
+  margin: 0px 0px 0px 5px;
+}
+
+#settings-undo {
+  margin: 0px 0px 0px 7px;
 }
 
 #spot-0 {
@@ -314,10 +366,6 @@ body {
 
 #team1-undo-flag:hover, #team2-undo-flag:hover {
   background: #61a793;
-}
-
-.icon-remove-sign {
-  margin: 2px 0px 0px 0px;
 }
 
 #team2-chips {
