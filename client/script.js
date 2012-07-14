@@ -110,6 +110,15 @@ $(document).ready(function() {
   });
   
   // Use hover to indicate bets by lightening background colors.
+  $('#bet-straightup-0').hover(
+    function() {
+      $('#spot-0').css('background-color', '#77b3a2');
+    },
+    function() {
+      $('#spot-0').css('background-color', '#397564');
+    }
+  );
+  
   $('.spacer').hover(
     function() {
       var bet = $(this).attr('id');
@@ -157,94 +166,92 @@ $(document).ready(function() {
               $('#spot-' + i).css('background-color', '#444444');
             }
           }
-        } else if (bet == 'bet-dozen-2nd') {
-          for (var i = 13; i <= 24; i++) {
-            $('#spot-2nd').css('background-color', '#77b3a2');
-            
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff6f77');
-            } else {
-              $('#spot-' + i).css('background-color', '#444444');
-            }
+      } else if (bet == 'bet-dozen-2nd') {
+        for (var i = 13; i <= 24; i++) {
+          $('#spot-2nd').css('background-color', '#77b3a2');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff6f77');
+          } else {
+            $('#spot-' + i).css('background-color', '#444444');
           }
-        } else if (bet == 'bet-dozen-3rd') {
-          for (var i = 25; i <= 36; i++) {
-            $('#spot-3rd').css('background-color', '#77b3a2');
-            
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff6f77');
-            } else {
-              $('#spot-' + i).css('background-color', '#444444');
-            }
+        }
+      } else if (bet == 'bet-dozen-3rd') {
+        for (var i = 25; i <= 36; i++) {
+          $('#spot-3rd').css('background-color', '#77b3a2');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff6f77');
+          } else {
+            $('#spot-' + i).css('background-color', '#444444');
           }
-        } else if (bet == 'bet-half-1to18') {
-          for (var i = 1; i <= 18; i++) {
-            $('#spot-1to18').css('background-color', '#77b3a2');
-            
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff6f77');
-            } else {
-              $('#spot-' + i).css('background-color', '#444444');
-            }
+        }
+      } else if (bet == 'bet-half-1to18') {
+        for (var i = 1; i <= 18; i++) {
+          $('#spot-1to18').css('background-color', '#77b3a2');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff6f77');
+          } else {
+            $('#spot-' + i).css('background-color', '#444444');
           }
-        } else if (bet == 'bet-half-19to36') {
-          for (var i = 19; i <= 36; i++) {
-            $('#spot-19to36').css('background-color', '#77b3a2');
-            
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff6f77');
-            } else {
-              $('#spot-' + i).css('background-color', '#444444');
-            }
+        }
+      } else if (bet == 'bet-half-19to36') {
+        for (var i = 19; i <= 36; i++) {
+          $('#spot-19to36').css('background-color', '#77b3a2');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff6f77');
+          } else {
+            $('#spot-' + i).css('background-color', '#444444');
           }
-        } else if (bet == 'bet-other-even') {
-          for (var i = 2; i <= 36; i += 2) {
-            $('#spot-even').css('background-color', '#77b3a2');
-            
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff6f77');
-            } else {
-              $('#spot-' + i).css('background-color', '#444444');
-            }
+        }
+      } else if (bet == 'bet-other-even') {
+        for (var i = 2; i <= 36; i += 2) {
+          $('#spot-even').css('background-color', '#77b3a2');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff6f77');
+          } else {
+            $('#spot-' + i).css('background-color', '#444444');
           }
-        } else if (bet == 'bet-other-odd') {
-          for (var i = 1; i <= 35; i += 2) {
-            $('#spot-odd').css('background-color', '#77b3a2');
-            
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff6f77');
-            } else {
-              $('#spot-' + i).css('background-color', '#444444');
-            }
+        }
+      } else if (bet == 'bet-other-odd') {
+        for (var i = 1; i <= 35; i += 2) {
+          $('#spot-odd').css('background-color', '#77b3a2');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff6f77');
+          } else {
+            $('#spot-' + i).css('background-color', '#444444');
           }
-        } else if (bet == 'bet-other-red') {
-          for (var i = 1; i <= 36; i++) {
-            $('#spot-red').css('background-color', '#77b3a2');
-            
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff6f77');
-            }
+        }
+      } else if (bet == 'bet-other-red') {
+        for (var i = 1; i <= 36; i++) {
+          $('#spot-red').css('background-color', '#77b3a2');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff6f77');
           }
-        } else if (bet == 'bet-other-black') {
-          for (var i = 1; i <= 36; i++) {
-            $('#spot-black').css('background-color', '#77b3a2');
-            
-            if ($('#spot-' + i).hasClass('black')) {
-              $('#spot-' + i).css('background-color', '#444444');
-            }
+        }
+      } else if (bet == 'bet-other-black') {
+        for (var i = 1; i <= 36; i++) {
+          $('#spot-black').css('background-color', '#77b3a2');
+          
+          if ($('#spot-' + i).hasClass('black')) {
+            $('#spot-' + i).css('background-color', '#444444');
           }
-        } else if (bet == 'bet-straightup-0') {
-           $('#spot-0').css('background-color', '#77b3a2');
-        } else {
-          for (var i = 0; i < nums.length; i++) {
-            if ($('#spot-' + nums[i]).hasClass('black')) {
-              $('#spot-' + nums[i]).css('background-color', '#444444');
-            } else if ($('#spot-' + nums[i]).hasClass('red')) {
-              $('#spot-' + nums[i]).css('background-color', '#ff6f77');
-            } else if ('#spot-' + nums[i] == '#spot-0') {
-              $('#spot-' + nums[i]).css('background-color', '#77b3a2');
-            }
+        }
+      } else {
+        for (var i = 0; i < nums.length; i++) {
+          if ($('#spot-' + nums[i]).hasClass('black')) {
+            $('#spot-' + nums[i]).css('background-color', '#444444');
+          } else if ($('#spot-' + nums[i]).hasClass('red')) {
+            $('#spot-' + nums[i]).css('background-color', '#ff6f77');
+          } else if ('#spot-' + nums[i] == '#spot-0') {
+            $('#spot-' + nums[i]).css('background-color', '#77b3a2');
           }
+        }
       }
     },
     function() {
@@ -286,91 +293,89 @@ $(document).ready(function() {
       } else if (bet == 'bet-dozen-1st') {
           for (var i = 1; i <= 12; i++) {
             $('#spot-1st').css('background-color', '#397564');
-
+            
             if ($('#spot-' + i).hasClass('red')) {
               $('#spot-' + i).css('background-color', '#ff1a37');
             } else {
               $('#spot-' + i).css('background-color', '#000000');
             }
           }
-        } else if (bet == 'bet-dozen-2nd') {
-          for (var i = 13; i <= 24; i++) {
-            $('#spot-2nd').css('background-color', '#397564');
-
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff1a37');
-            } else {
-              $('#spot-' + i).css('background-color', '#000000');
-            }
+      } else if (bet == 'bet-dozen-2nd') {
+        for (var i = 13; i <= 24; i++) {
+          $('#spot-2nd').css('background-color', '#397564');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff1a37');
+          } else {
+            $('#spot-' + i).css('background-color', '#000000');
           }
-        } else if (bet == 'bet-dozen-3rd') {
-          for (var i = 25; i <= 36; i++) {
-            $('#spot-3rd').css('background-color', '#397564');
-
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff1a37');
-            } else {
-              $('#spot-' + i).css('background-color', '#000000');
-            }
+        }
+      } else if (bet == 'bet-dozen-3rd') {
+        for (var i = 25; i <= 36; i++) {
+          $('#spot-3rd').css('background-color', '#397564');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff1a37');
+          } else {
+            $('#spot-' + i).css('background-color', '#000000');
           }
-        } else if (bet == 'bet-half-1to18') {
-          for (var i = 1; i <= 18; i++) {
-            $('#spot-1to18').css('background-color', '#397564');
-
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff1a37');
-            } else {
-              $('#spot-' + i).css('background-color', '#000000');
-            }
+        }
+      } else if (bet == 'bet-half-1to18') {
+        for (var i = 1; i <= 18; i++) {
+          $('#spot-1to18').css('background-color', '#397564');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff1a37');
+          } else {
+            $('#spot-' + i).css('background-color', '#000000');
           }
-        } else if (bet == 'bet-half-19to36') {
-          for (var i = 19; i <= 36; i++) {
-            $('#spot-19to36').css('background-color', '#397564');
-
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff1a37');
-            } else {
-              $('#spot-' + i).css('background-color', '#000000');
-            }
+        }
+      } else if (bet == 'bet-half-19to36') {
+        for (var i = 19; i <= 36; i++) {
+          $('#spot-19to36').css('background-color', '#397564');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff1a37');
+          } else {
+            $('#spot-' + i).css('background-color', '#000000');
           }
-        } else if (bet == 'bet-other-even') {
-          for (var i = 2; i <= 36; i += 2) {
-            $('#spot-even').css('background-color', '#397564');
+        }
+      } else if (bet == 'bet-other-even') {
+        for (var i = 2; i <= 36; i += 2) {
+          $('#spot-even').css('background-color', '#397564');
 
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff1a37');
-            } else {
-              $('#spot-' + i).css('background-color', '#000000');
-            }
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff1a37');
+          } else {
+            $('#spot-' + i).css('background-color', '#000000');
           }
-        } else if (bet == 'bet-other-odd') {
-          for (var i = 1; i <= 35; i += 2) {
-            $('#spot-odd').css('background-color', '#397564');
-
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff1a37');
-            } else {
-              $('#spot-' + i).css('background-color', '#000000');
-            }
+        }
+      } else if (bet == 'bet-other-odd') {
+        for (var i = 1; i <= 35; i += 2) {
+          $('#spot-odd').css('background-color', '#397564');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff1a37');
+          } else {
+            $('#spot-' + i).css('background-color', '#000000');
           }
-        } else if (bet == 'bet-other-red') {
-          for (var i = 1; i <= 36; i++) {
-            $('#spot-red').css('background-color', '#397564');
-
-            if ($('#spot-' + i).hasClass('red')) {
-              $('#spot-' + i).css('background-color', '#ff1a37');
-            }
+        }
+      } else if (bet == 'bet-other-red') {
+        for (var i = 1; i <= 36; i++) {
+          $('#spot-red').css('background-color', '#397564');
+          
+          if ($('#spot-' + i).hasClass('red')) {
+            $('#spot-' + i).css('background-color', '#ff1a37');
           }
-        } else if (bet == 'bet-other-black') {
-          for (var i = 1; i <= 36; i++) {
-            $('#spot-black').css('background-color', '#397564');
-
-            if ($('#spot-' + i).hasClass('black')) {
-              $('#spot-' + i).css('background-color', '#000000');
-            }
+        }
+      } else if (bet == 'bet-other-black') {
+        for (var i = 1; i <= 36; i++) {
+          $('#spot-black').css('background-color', '#397564');
+          
+          if ($('#spot-' + i).hasClass('black')) {
+            $('#spot-' + i).css('background-color', '#000000');
           }
-      } else if (bet == 'bet-straightup-0') {
-        $('#spot-0').css('background-color', '#397564');
+        }
       } else {
         for (var i = 0; i < nums.length; i++) {
           if ($('#spot-' + nums[i]).hasClass('black')) {
