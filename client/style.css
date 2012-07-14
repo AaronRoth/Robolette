@@ -41,18 +41,10 @@
   width: 46px;
 }
 
-.bet-spacer-column:hover {
-  background: #00c400;
-}
-
 .bet-spacer-horizontal-long {
   float: left;
   height: 8px;
   width: 40px;
-}
-
-.bet-spacer-horizontal-long:hover {
-  background: #00c400;
 }
 
 .bet-spacer-horizontal-short {
@@ -61,18 +53,10 @@
   width: 36px;
 }
 
-.bet-spacer-horizontal-short:hover {
-  background: #00c400;
-}
-
 .bet-spacer-other {
   float: left;
   height: 72px;
   width: 88px;
-}
-
-.bet-spacer-other:hover {
-  background: #00c400;
 }
 
 .bet-spacer-square {
@@ -81,18 +65,10 @@
   width: 8px;
 }
 
-.bet-spacer-square:hover {
-  background: #00c400;
-}
-
 .bet-spacer-thin-bottom {
   float: left;
   height: 58px;
   width: 8px;
-}
-
-.bet-spacer-thin-bottom:hover {
-  background: #00c400;
 }
 
 .bet-spacer-thin-middle {
@@ -101,18 +77,10 @@
   width: 8px;
 }
 
-.bet-spacer-thin-middle:hover {
-  background: #00c400;
-}
-
 .bet-spacer-thin-top {
   float: left;
   height: 68px;
   width: 8px;
-}
-
-.bet-spacer-thin-top:hover {
-  background: #00c400;
 }
 
 .bet-spacer-thirds {
@@ -121,18 +89,10 @@
   width: 176px;
 }
 
-.bet-spacer-thirds:hover {
-  background: #00c400;
-}
-
 .bet-spacer-wide-bottom {
   float: left;
   height: 58px;
   width: 36px;
-}
-
-.bet-spacer-wide-bottom:hover {
-  background: #00c400;
 }
 
 .bet-spacer-wide-end {
@@ -141,18 +101,10 @@
   width: 40px;
 }
 
-.bet-spacer-wide-end:hover {
-  background: #00c400;
-}
-
 .bet-spacer-wide-end-bottom {
   float: left;
   height: 62px;
   width: 40px;
-}
-
-.bet-spacer-wide-end-bottom:hover {
-  background: #00c400;
 }
 
 .bet-spacer-wide-middle {
@@ -161,29 +113,18 @@
   width: 36px;
 }
 
-.bet-spacer-wide-middle:hover {
-  background: #00c400;
-}
-
 .bet-spacer-wide-top {
   float: left;
   height: 68px;
   width: 36px;
 }
 
-.bet-spacer-wide-top:hover {
-  background: #00c400;
-}
-
 #bet-straightup-0 {
+  border-bottom: solid 4px #ffffff;
   float: left;
-  height: 210px;
+  height: 206px;
   margin-bottom: 9px;
   width: 42px;
-}
-
-#bet-straightup-0:hover {
-  background: #00c400;
 }
 
 #bet-straightup-34 {
@@ -199,7 +140,7 @@ body {
 }
 
 #canvas-wrapper {
-  background: #006600;
+  background: #397564;
   float: left;
   height: 374px;
   width: 374px;
@@ -219,7 +160,7 @@ body {
 }
 
 #game-board {
-  background: #006600;
+  background: #397564;
   float: left;
   height: 350px;
   position: relative;
@@ -229,7 +170,7 @@ body {
 }
 
 #game-table {
-  background: #006600;
+  background: #397564;
   -moz-box-shadow: 0 0 5px 5px #000000;
   -webkit-box-shadow: 0 0 5px 5px #000000;
   box-shadow: 0 0 5px 5px #888888;
@@ -297,7 +238,7 @@ body {
 }
 
 .red {
-  background: #ff0000;
+  background: #ff1a37;
 }
 
 #score-area {
