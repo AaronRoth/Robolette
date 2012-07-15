@@ -197,6 +197,41 @@ body {
   width: 994px;
 }
 
+#glass1 {
+  float: right;
+  padding: 5px 0px 0px 0px;
+}
+
+#glass2 {
+  float: right;
+  padding: 5px 0px 0px 0px;
+}
+
+#max {
+  width: 100px;
+}
+
+#min {
+  width: 100px;
+}
+
+#max-number {
+  margin: 0px 0px 0px 2px;
+}
+
+#min-number {
+  margin: 0px;
+}
+
+#min-max {
+  border-radius: 5px;
+  float: left;
+  height: 50px;
+  margin: 10px 0px 0px 0px;
+  padding: 5px;
+  width: 100px;
+}
+
 .num-bets {
   border-right: 4px solid #ffffff;;
   border-top: 4px solid #ffffff;

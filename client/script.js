@@ -830,6 +830,10 @@ function initialize_game() {
   $('#team1-score').text(gameState['drinks']['team2']);
   $('#team2-score').text(gameState['drinks']['team1']);
   
+  // Set min and max display.
+  $('#min-number').text(minBet);
+  $('#max-number').text(maxBet);
+  
   // Setup chip area.
   update_chips(startBank, startBank);
   var currPlayer = gameState['state']['player'];
