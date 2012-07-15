@@ -826,6 +826,10 @@ function initialize_game() {
   gameState['min'] = minBet;
   gameState['max'] = maxBet;
   
+  // Initialize scores.
+  $('#team1-score').text(gameState['drinks']['team2']);
+  $('#team2-score').text(gameState['drinks']['team1']);
+  
   // Setup chip area.
   update_chips(startBank, startBank);
   var currPlayer = gameState['state']['player'];
@@ -1148,6 +1152,6 @@ function update_view(player, object) {
   update_chips(gameState['chips']['team1'], gameState['chips']['team2']);
   
   // Update scores.
-  $('#team1-score').text(gameState['scores']['team1']);
-  $('#team2-score').text(gameState['scores']['team2']);
+  $('#team1-score').text(gameState['drinks']['team2']);
+  $('#team2-score').text(gameState['drinks']['team1']);
 }
