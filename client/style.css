@@ -197,39 +197,25 @@ body {
   width: 994px;
 }
 
-#glass1 {
-  float: right;
-  padding: 5px 0px 0px 0px;
-}
-
-#glass2 {
-  float: right;
-  padding: 5px 0px 0px 0px;
-}
-
-#max {
-  width: 100px;
-}
-
-#min {
-  width: 100px;
-}
-
-#max-number {
-  margin: 0px 0px 0px 2px;
-}
-
-#min-number {
-  margin: 0px;
+#glass1, #glass2 {
+  padding: 5px 1px 0px 0px;
 }
 
 #min-max {
+  background: #1c1e19;
   border-radius: 5px;
+  color: #ffffff;
+  font-size: 10pt;
   float: left;
-  height: 50px;
-  margin: 10px 0px 0px 0px;
-  padding: 5px;
-  width: 100px;
+  height: 32px;
+  margin: 25px 0px 0px 0px;
+  padding: 6px;
+  text-align: center;
+  width: 72px;
+}
+
+.min-max-word {
+  margin: 0px 0px 0px 5px;
 }
 
 .num-bets {
@@ -301,8 +287,8 @@ body {
 #reset, #undo {
   border-radius: 5px;
   cursor: pointer;
-  height: 16px;
-  padding: 2px;
+  height: 14px;
+  padding: 2px 3px 3px 3px;
   width: 97px;
 }
 
@@ -335,7 +321,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-size: 14pt;
-  height: 16px;
+  height: 14px;
   margin: 0px 0px 0px 79px;
   padding: 2px;
   width: 18px;
@@ -346,10 +332,11 @@ body {
 }
 
 #settings-menu {
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   float: right;
   height: 60px;
-  margin: 10px 0px 0px 0px;
+  margin: 25px 0px 0px 0px;
   padding: 5px;
 }
 
