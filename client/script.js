@@ -410,6 +410,9 @@ $(document).ready(function() {
       hide_menu(event);
     }
   });
+  
+  // Hide settings menu if undo is clicked.
+  $('#undo').click(hide_menu);
 
   // NOT DONE YET!!!!!!!!!!!!!!!!!!!!
   // freeze_board function
@@ -798,11 +801,19 @@ function hide_menu(event) {
   var node = event.target;
   
   while (node != document) {
+    if (node == $('#undo')[0]) {
+      $(document).unbind('click.menu');
+      $('#options').css('visibility', 'hidden');
+      $('#settings-menu').css('background', '#397564');
+      setTimeout(function() {$('#settings-menu').click(show_menu);}, 0);
+    }
+    
     if (node == $('#options')[0]) {
       return;
     }
     node = node.parentNode;
   }
+  
   $(document).unbind('click.menu');
   $('#options').css('visibility', 'hidden');
   $('#settings-menu').css('background', '#397564');
