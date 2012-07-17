@@ -13,18 +13,17 @@ var canvasX = 187;
 var canvasY = 187;
 
 // Wheel positioning.
-var angleShift = Math.PI / 4;
 var arc = Math.PI / 18.5;
 var arcSmall = Math.PI / 4;
 var arcSmallAdjustment = Math.PI / 4.01;
 var context;
 var innerNumRadius = 125;
-var innerMetalRadius = 5;
+var innerMetalRadius = 6;
 var innerSmallRadius = 100;
-var innerWoodRadius = 15;
+var innerWoodRadius = 1;
 var outerDarkWoodRadius = 170;
 var outerNumRadius = 150;
-var outerMetalRadius = 18;
+var outerMetalRadius = 20;
 var outerLightWoodRadius = 155;
 var startAngle = 1.5 * Math.PI;
 var startAngleInner = 1.5 * Math.PI;
@@ -33,7 +32,7 @@ var textRadius = 132;
 // Wheel style and content.
 var black = '#000000';
 var darkWood = '#3e1a0e';
-var fontStyle = 'bold 13pt Bookman'; // "Cantata One"
+var fontStyle = 'bold 13pt Palatino'; // "Cantata One"
 var green = '#006600';
 var lightWood = '#c89158';
 var lineWidth = 2;
@@ -42,7 +41,10 @@ var numbers = ['0', '32', '15', '19', '4', '21', '2', '25', '17', '34', '6',
                '33', '1', '20', '14', '31', '9', '22', '18', '29', '7', '28',
                '12', '35', '3', '26'];
 var red = '#ff0000';
-var silver = '#dfe9ea';
+var silver = '#d4e2e4';
+var silverDark = '#cadbdd';
+var shadow = '#999999';
+var shadowDark = '#777777';
 var white = '#ffffff';
 
 // Wheel spinning.
@@ -768,14 +770,17 @@ function draw_wheel() {
     }
     
     // Set metal styles.
-    context.fillStyle = silver;
-    context.strokeStyle = black;
+    context.fillStyle = silverDark;
+    context.strokeStyle = shadowDark;
     
     // Draw outer metal center.
     context.beginPath();
     context.arc(canvasX, canvasY, outerMetalRadius, 0, Math.PI * 2, true);
     context.stroke();
     context.fill();
+    
+    context.fillStyle = silver;
+    context.strokeStyle = shadow;
     
     // Draw inner metal center.
     context.beginPath();
@@ -857,14 +862,14 @@ function draw_wheel() {
     // Draw arrow.
     context.fillStyle = white;
     context.beginPath();
-    context.moveTo(187 - 0, 187 - (outerNumRadius + 5));
-    context.lineTo(187 + 0, 187 - (outerNumRadius + 5));
-    context.lineTo(187 + 0, 187 - (outerNumRadius - 5));
-    context.lineTo(187 + 9, 187 - (outerNumRadius - 5));
-    context.lineTo(187 + 0, 187 - (outerNumRadius - 13));
-    context.lineTo(187 - 9, 187 - (outerNumRadius - 5));
-    context.lineTo(187 - 0, 187 - (outerNumRadius - 5));
-    context.lineTo(187 - 0, 187 - (outerNumRadius + 5));
+    context.moveTo(187 - 0, 210 - (outerNumRadius + 10));
+    context.lineTo(187 + 0, 210 - (outerNumRadius + 10));
+    context.lineTo(187 + 0, 210 - (outerNumRadius - 10));
+    context.lineTo(187 + 9, 210 - (outerNumRadius - 10));
+    context.lineTo(187 + 0, 210 - (outerNumRadius - 18));
+    context.lineTo(187 - 9, 210 - (outerNumRadius - 10));
+    context.lineTo(187 - 0, 210 - (outerNumRadius - 10));
+    context.lineTo(187 - 0, 210 - (outerNumRadius + 10));
     context.fill();
   } else {
     alert('Your browser does not support this game! ' +
