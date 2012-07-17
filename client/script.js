@@ -13,24 +13,37 @@ var canvasX = 187;
 var canvasY = 187;
 
 // Wheel positioning.
+var angleShift = Math.PI / 4;
 var arc = Math.PI / 18.5;
+var arcSmall = Math.PI / 4;
+var arcSmallAdjustment = Math.PI / 4.01;
 var context;
-var insideRadius = 125;
-var outsideRadius = 150;
+var innerNumRadius = 125;
+var innerMetalRadius = 5;
+var innerSmallRadius = 100;
+var innerWoodRadius = 15;
+var outerDarkWoodRadius = 170;
+var outerNumRadius = 150;
+var outerMetalRadius = 18;
+var outerLightWoodRadius = 155;
 var startAngle = 1.5 * Math.PI;
+var startAngleInner = 1.5 * Math.PI;
 var textRadius = 132;
 
 // Wheel style and content.
 var black = '#000000';
-var fontStyle = '12pt "Cantata One"';
+var darkWood = '#3e1a0e';
+var fontStyle = 'bold 13pt Bookman'; // "Cantata One"
 var green = '#006600';
+var lightWood = '#c89158';
 var lineWidth = 2;
-var red = '#ff0000';
-var white = '#ffffff';
 var numbers = ['0', '32', '15', '19', '4', '21', '2', '25', '17', '34', '6',
                '27', '13', '36', '11', '30', '8', '23', '10', '5', '24', '16',
                '33', '1', '20', '14', '31', '9', '22', '18', '29', '7', '28',
                '12', '35', '3', '26'];
+var red = '#ff0000';
+var silver = '#dfe9ea';
+var white = '#ffffff';
 
 // Wheel spinning.
 var spinAngle = 0;
@@ -733,16 +746,78 @@ function draw_wheel() {
     context = canvas.getContext('2d');
     context.clearRect(0, 0, 500, 500);
     
-    // Set wheel styles.
-    context.strokeStyle = black;
-    context.lineWidth = lineWidth;
-    context.font = fontStyle;
+    // Draw the inner light wood section.
+    for (var h = 0; h < 8; h++) {
+      if (h == 7) {
+        var angle = startAngleInner + h * arcSmallAdjustment;
+      } else {
+        var angle = startAngleInner + h * arcSmall;
+      }
+      
+      // Set some styles.
+      context.lineWidth = lineWidth;
+      context.fillStyle = lightWood;
+      context.strokeStyle = black;
+      
+      // Draw wood section.
+      context.beginPath();
+      context.arc(canvasX, canvasY, innerWoodRadius, angle + arcSmall, angle, true);
+      context.arc(canvasX, canvasY, innerSmallRadius, angle, angle + arcSmall, false);
+      context.stroke();
+      context.fill();
+    }
     
-    // Draw entire wheel.
+    // Set metal styles.
+    context.fillStyle = silver;
+    context.strokeStyle = black;
+    
+    // Draw outer metal center.
+    context.beginPath();
+    context.arc(canvasX, canvasY, outerMetalRadius, 0, Math.PI * 2, true);
+    context.stroke();
+    context.fill();
+    
+    // Draw inner metal center.
+    context.beginPath();
+    context.arc(canvasX, canvasY, innerMetalRadius, 0, Math.PI * 2, true);
+    context.stroke();
+    context.fill();
+    
+    // Draw the rest of the wheel.
     for (var i = 0; i < 37; i++) {
       var angle = startAngle + i * arc;
       
-      // Set colors.
+      // Set some basic styles.
+      context.lineWidth = lineWidth;
+      context.font = fontStyle;
+      
+      // Set dark wood color styles.
+      context.fillStyle = darkWood;
+      context.strokeStyle = darkWood;
+      
+      // Draw outer dark wood band on wheel.
+      context.beginPath();
+      context.arc(canvasX, canvasY, outerDarkWoodRadius, angle, angle + arc, false);
+      context.arc(canvasX, canvasY, outerLightWoodRadius, angle + arc, angle, true);
+      context.stroke();
+      context.fill();
+      
+      // Set light wood color styles.
+      context.fillStyle = lightWood;
+      context.strokeStyle = lightWood;
+      
+      // Draw outer wood band on wheel.
+      
+      context.beginPath();
+      context.arc(canvasX, canvasY, outerLightWoodRadius, angle, angle + arc, false);
+      context.arc(canvasX, canvasY, outerNumRadius, angle + arc, angle, true);
+      context.stroke();
+      context.fill();
+      
+      // Reset a wheel style.
+      context.strokeStyle = black;
+      
+      // Reset wheel colors.
       if (i == 0) {
         context.fillStyle = green;
       } else if (i % 2 != 0) {
@@ -751,10 +826,17 @@ function draw_wheel() {
         context.fillStyle = black;
       }
       
-      // Draw wheel.
+      // Draw number band on wheel.
       context.beginPath();
-      context.arc(canvasX, canvasY, outsideRadius, angle, angle + arc, false);
-      context.arc(canvasX, canvasY, insideRadius, angle + arc, angle, true);
+      context.arc(canvasX, canvasY, outerNumRadius, angle, angle + arc, false);
+      context.arc(canvasX, canvasY, innerNumRadius, angle + arc, angle, true);
+      context.stroke();
+      context.fill();
+      
+      // Draw inner bet colors band on wheel.
+      context.beginPath();
+      context.arc(canvasX, canvasY, innerNumRadius - 1, angle, angle + arc, false);
+      context.arc(canvasX, canvasY, innerSmallRadius, angle + arc, angle, true);
       context.stroke();
       context.fill();
       context.save();
@@ -775,14 +857,14 @@ function draw_wheel() {
     // Draw arrow.
     context.fillStyle = white;
     context.beginPath();
-    context.moveTo(187 - 0, 187 - (outsideRadius + 5));
-    context.lineTo(187 + 0, 187 - (outsideRadius + 5));
-    context.lineTo(187 + 0, 187 - (outsideRadius - 5));
-    context.lineTo(187 + 9, 187 - (outsideRadius - 5));
-    context.lineTo(187 + 0, 187 - (outsideRadius - 13));
-    context.lineTo(187 - 9, 187 - (outsideRadius - 5));
-    context.lineTo(187 - 0, 187 - (outsideRadius - 5));
-    context.lineTo(187 - 0, 187 - (outsideRadius + 5));
+    context.moveTo(187 - 0, 187 - (outerNumRadius + 5));
+    context.lineTo(187 + 0, 187 - (outerNumRadius + 5));
+    context.lineTo(187 + 0, 187 - (outerNumRadius - 5));
+    context.lineTo(187 + 9, 187 - (outerNumRadius - 5));
+    context.lineTo(187 + 0, 187 - (outerNumRadius - 13));
+    context.lineTo(187 - 9, 187 - (outerNumRadius - 5));
+    context.lineTo(187 - 0, 187 - (outerNumRadius - 5));
+    context.lineTo(187 - 0, 187 - (outerNumRadius + 5));
     context.fill();
   } else {
     alert('Your browser does not support this game! ' +
@@ -907,6 +989,7 @@ function rotate_wheel() {
                 ease_out(spinTime, 0, spinAngleStart, spinTimeTotal);
     
     startAngle += spinAngle * Math.PI / 180;
+    startAngleInner += spinAngle * Math.PI / 180;
     draw_wheel();
     spinTimeout = setTimeout('rotate_wheel()', 30);
   }
