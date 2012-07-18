@@ -94,8 +94,13 @@ $(document).ready(function() {
   // Make or undo bets.
   $('#game-board').click(function(event) {
     if (gameState['state']['changes'] == 1) {
-      if ($(event.target).hasClass('token')) {
-        update_board_model($(event.target).parent());
+      if ($(event.target).hasClass('token') ||
+          $(event.target).parent().hasClass('token')) {
+          if ($(event.target).hasClass('token')) {
+            update_board_model($(event.target).parent());
+          } else {
+            update_board_model($(event.target).parent().parent());
+          }
       } else {
         update_board_model($(event.target));
       }
@@ -934,6 +939,8 @@ function initialize_game() {
   
   // Setup chip area.
   update_chips(startBank, startBank);
+  
+  // Set current player.
   var currPlayer = gameState['state']['player'];
   if (currPlayer == 'team1') {
     $('#team1-chips').css('background', '#77b3a2');
@@ -941,6 +948,7 @@ function initialize_game() {
     $('#team2-chips').css('background', '#77b3a2');
   }
   
+  // Display gameboard.
   $('#form').fadeOut(100, 'linear', function() {
     $('#form').remove();
   });
@@ -973,7 +981,17 @@ function restack(betID) {
     }
     
     var currClass = $(chipStack.get(i)).attr('class');
-    var chip = $('<div class="' + currClass + '"></div>');
+    var chip = $('<div class="' + currClass + '">' +
+                   '<div class="token-top-stripe1"></div>' +
+                   '<div class="token-top-stripe2"></div>' +
+                   '<div class="token-right-stripe1"></div>' +
+                   '<div class="token-right-stripe2"></div>' +
+                   '<div class="token-bottom-stripe1"></div>' +
+                   '<div class="token-bottom-stripe2"></div>' +
+                   '<div class="token-left-stripe1"></div>' +
+                   '<div class="token-left-stripe2"></div>' +
+                   '<div class="token-ring">1</div>' +
+                 '</div>');
     chip.css('left', leftVal);
     chip.css('top', topVal);
     chip.css('z-index', tokenCount);
@@ -998,6 +1016,14 @@ function rotate_wheel() {
     draw_wheel();
     spinTimeout = setTimeout('rotate_wheel()', 30);
   }
+}
+
+function show_menu() {
+  $('#options').css('visibility', 'visible');
+  $('#settings-menu').css('background', '#77b3a2');
+  
+  $('#settings-menu').unbind();
+  setTimeout(function() {$(document).bind('click.menu', hide_menu);}, 0);
 }
 
 function spin() {
@@ -1050,7 +1076,7 @@ function undo() {
 }
 
 function update_board_model(clickedObject) {
-  var clickedID = clickedObject.attr('id');
+  var clickedID = $(clickedObject).attr('id');
   var currentPlayer = gameState['state']['player'];
   var currentPlayerBets = gameState['bets'][clickedID][currentPlayer];
   var maxBet = gameState['max'];
@@ -1137,7 +1163,17 @@ function update_chips(chipsT1, chipsT2) {
       topVal = topVal - 2 * numChipsPlaced;
     }
     
-    var chipTeam1 = $('<div class="token blue"></div>');
+    var chipTeam1 = $('<div class="token blue">' +
+                        '<div class="token-top-stripe1"></div>' +
+                        '<div class="token-top-stripe2"></div>' +
+                        '<div class="token-right-stripe1"></div>' +
+                        '<div class="token-right-stripe2"></div>' +
+                        '<div class="token-bottom-stripe1"></div>' +
+                        '<div class="token-bottom-stripe2"></div>' +
+                        '<div class="token-left-stripe1"></div>' +
+                        '<div class="token-left-stripe2"></div>' +
+                        '<div class="token-ring">1</div>' +
+                      '</div>');
     chipTeam1.css('left', leftVal);
     chipTeam1.css('top', topVal);
     chipTeam1.css('z-index', tokenCount);
@@ -1157,7 +1193,17 @@ function update_chips(chipsT1, chipsT2) {
       topVal = topVal - 2 * numChipsPlaced;
     }
     
-    var chipTeam2 = $('<div class="token yellow"></div>');
+    var chipTeam2 = $('<div class="token yellow">' +
+                        '<div class="token-top-stripe1"></div>' +
+                        '<div class="token-top-stripe2"></div>' +
+                        '<div class="token-right-stripe1"></div>' +
+                        '<div class="token-right-stripe2"></div>' +
+                        '<div class="token-bottom-stripe1"></div>' +
+                        '<div class="token-bottom-stripe2"></div>' +
+                        '<div class="token-left-stripe1"></div>' +
+                        '<div class="token-left-stripe2"></div>' +
+                        '<div class="token-ring">1</div>' +
+                      '</div>');
     chipTeam2.css('left', leftVal);
     chipTeam2.css('top', topVal);
     chipTeam2.css('z-index', tokenCount);
@@ -1210,7 +1256,17 @@ function update_view(player, object) {
           $('#' + bet).css('z-index', '1');
           
           // Add chip to the table.
-          var chip = $('<div class="token blue"></div>');
+          var chip = $('<div class="token blue">' +
+                         '<div class="token-top-stripe1"></div>' +
+                         '<div class="token-top-stripe2"></div>' +
+                         '<div class="token-right-stripe1"></div>' +
+                         '<div class="token-right-stripe2"></div>' +
+                         '<div class="token-bottom-stripe1"></div>' +
+                         '<div class="token-bottom-stripe2"></div>' +
+                         '<div class="token-left-stripe1"></div>' +
+                         '<div class="token-left-stripe2"></div>' +
+                         '<div class="token-ring">1</div>' +
+                       '</div>');
           chip.css('left', leftVal);
           chip.css('top', topVal);
           chip.css('z-index', tokenCount);
@@ -1240,7 +1296,17 @@ function update_view(player, object) {
           $('#' + bet).css('z-index', '1');
           
           // Add chip to the table.
-          var chip = $('<div class="token yellow"></div>');
+          var chip = $('<div class="token yellow">' +
+                         '<div class="token-top-stripe1"></div>' +
+                         '<div class="token-top-stripe2"></div>' +
+                         '<div class="token-right-stripe1"></div>' +
+                         '<div class="token-right-stripe2"></div>' +
+                         '<div class="token-bottom-stripe1"></div>' +
+                         '<div class="token-bottom-stripe2"></div>' +
+                         '<div class="token-left-stripe1"></div>' +
+                         '<div class="token-left-stripe2"></div>' +
+                         '<div class="token-ring">1</div>' +
+                       '</div>');
           chip.css('left', leftVal);
           chip.css('top', topVal);
           chip.css('z-index', tokenCount);

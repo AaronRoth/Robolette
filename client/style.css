@@ -244,7 +244,6 @@ body {
   display: block;
   font-size: 22pt;
   font-style: bold;
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
   -moz-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   height: 20px;
@@ -466,18 +465,88 @@ body {
 }
 
 .token {
-  border: 1px solid #000000;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+  border: 1px solid #002949;
+  -moz-border-radius: 11px;
+  -webkit-border-radius: 11px;
   cursor: pointer;
   font-size: 10pt;
   font-weight: bold;
-  height: 20px;
+  height: 22px;
   line-height: 20px;
   margin: 0px;
   padding: 0px 0px 0px 1px;
   position: absolute;
-  width: 20px;
+  width: 21px;
+}
+
+.token-bottom-stripe1 {
+  background: #ffffff;
+  height: 4px;
+  left: 9px;
+  position: absolute;
+  top: 18px;
+  width: 1px;
+}
+
+.token-bottom-stripe2 {
+  background: #ffffff;
+  height: 4px;
+  left: 12px;
+  position: absolute;
+  top: 18px;
+  width: 1px;
+}
+
+.token-left-stripe1 {
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+  height: 4px;
+  left: 0px;
+  position: absolute;
+  top: 9px;
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  width: 2px;
+}
+
+.token-left-stripe2 {
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+  height: 4px;
+  left: 18px;
+  position: absolute;
+  top: 9px;
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  width: 2px;
+}
+
+.token-ring {
+  border: 1px solid #ffffff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  color: #ffffff;
+  font-size: 6pt;
+  height: 12px;
+  line-height: 1.8;
+  margin: 4px 3px 4px 3px;
+  width: 12px;
+}
+
+.token-top-stripe1 {
+  background: #ffffff;
+  height: 4px;
+  left: 9px;
+  position: absolute;
+  width: 1px;
+}
+
+.token-top-stripe2 {
+  background: #ffffff;
+  height: 4px;
+  left: 12px;
+  position: absolute;
+  width: 1px;
 }
 
 .yellow {
