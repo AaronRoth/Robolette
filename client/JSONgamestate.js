@@ -1,5 +1,6 @@
 // Game state object.
 var gameState = {
+  "bank": 0,
   "bets": {
     "bet-straightup-0": {
       "team1": 0,

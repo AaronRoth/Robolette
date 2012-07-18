@@ -432,12 +432,7 @@ $(document).ready(function() {
   });
   
   // Hide settings menu if undo is clicked.
-  $('#undo').click(hide_menu);
-
-  // NOT DONE YET!!!!!!!!!!!!!!!!!!!!
-  // freeze_board function
-  // COMPLETE COMPLETE COMPLETE THIS!
-  
+  $('#undo').click(hide_menu);  
 });
 
 function determine_outcome(winningNumber) {
@@ -449,17 +444,18 @@ function determine_outcome(winningNumber) {
     var betsTeam2 = gameState['bets'][betToCheck]['team2'];
     
     if (gameState['totals']['team1'] >= gameState['min'] && betsTeam1 > 0) {
-      gameState['drinks']['team2'] = gameState['drinks']['team2'] + betsTeam1;
+      gameState['drinks']['team2'] += betsTeam1;
     }
     
     if (gameState['totals']['team2'] >= gameState['min'] && betsTeam2 > 0) {
-      gameState['drinks']['team1'] = gameState['drinks']['team1'] + betsTeam2;
+      gameState['drinks']['team1'] += betsTeam2;
     }
   });
   
-  // Update view so that the score board will reflect new wins/losses.
-  update_view('neither', null);
+  // Update view so that the score board will reflect new wins/losses, etc.
+  update_view('neither', null, 1);
   
+  // Get drinks to be poured.
   var drinksT1 = gameState['drinks']['team1'];
   var drinksT2 = gameState['drinks']['team2'];
   
@@ -470,33 +466,8 @@ function determine_outcome(winningNumber) {
     data: {team_one: drinksT1, team_two: drinksT2}
   });
   
-  // -------- Reset temporary values in the model -------- //
-  
-  var bets = gameState['bets'];
-  
-  // Reset bet values to zero.
-  for (var bet in bets) {
-    if (bets.hasOwnProperty(bet)) {
-      gameState['bets'][bet]['team1'] = 0;
-      gameState['bets'][bet]['team2'] = 0;
-    }
-  }
-  
-  // Reset drink values to zero.
-  gameState['drinks']['team1'] = 0;
-  gameState['drinks']['team2'] = 0;
-  
-  // Reset bet totals to zero.
-  gameState['totals']['team1'] = 0;
-  gameState['totals']['team2'] = 0;
-  
-  // Reset state values.
-  gameState['state']['changes'] = 1;
-  gameState['state']['player'] = 'none';
-  gameState['state']['spins'] = 1;
-  gameState['state']['undo'] = 0;
-  
-  update_view('neither', null);
+  // Reset board for new round.
+  reset_board_model();
 }
 
 function determine_winning_bets(winningNumber) {
@@ -912,15 +883,9 @@ function hide_menu(event) {
   setTimeout(function() {$('#settings-menu').click(show_menu);}, 0);
 }
 
-function freeze_board() {
-  gameState['state']['changes'] = 0;
-  gameState['state']['spins'] = 0;
-  
-  alert('Freeze board. Still needs defining.');
-}
-
 function initialize_game() {
-  var startBank = $('#starting-bank').val();
+  gameState['bank'] = $('#starting-bank').val();
+  var startBank = gameState['bank'];
   var minBet = $('#min-bet').val();
   var maxBet = $('#max-bet').val();
   
@@ -961,6 +926,31 @@ function initialize_game() {
   draw_wheel();
 }
 
+// Reset the values in the board model for a new round.
+function reset_board_model() {
+  var bets = gameState['bets'];
+  
+  // Reset bet values to zero.
+  for (var bet in bets) {
+    if (bets.hasOwnProperty(bet)) {
+      gameState['bets'][bet]['team1'] = 0;
+      gameState['bets'][bet]['team2'] = 0;
+    }
+  }
+  
+  // Reset drink counts.
+  gameState['drinks']['team1'] = 0;
+  gameState['drinks']['team2'] = 0;
+  
+  // Reset bet totals to zero.
+  gameState['totals']['team1'] = 0;
+  gameState['totals']['team2'] = 0;
+  
+  // Reset state values.
+  gameState['state']['spins'] = 1;
+  gameState['state']['undo'] = 0;
+}
+
 // Restacks the a stack of chips after one has been removed.
 function restack(betID) {
   var chipStack = $('#' + betID).children();
@@ -990,7 +980,7 @@ function restack(betID) {
                    '<div class="token-bottom-stripe2"></div>' +
                    '<div class="token-left-stripe1"></div>' +
                    '<div class="token-left-stripe2"></div>' +
-                   '<div class="token-ring">1</div>' +
+                   '<div class="token-ring"></div>' +
                  '</div>');
     chip.css('left', leftVal);
     chip.css('top', topVal);
@@ -1034,9 +1024,8 @@ function spin() {
 }
 
 function stop_wheel() {
-  // Stop the wheel and freeze all input.
+  // Stop the wheel.
   clearTimeout(spinTimeout);
-  freeze_board();
   
   // Calculate what number the ball landed on.
   var radiansSpun = startAngle - (1.5 * Math.PI);
@@ -1051,7 +1040,6 @@ function stop_wheel() {
   
   // Determine winners and update the view.
   determine_outcome(winningNumber);
-  update_view('neither', null);
 }
 
 function undo() {
@@ -1093,7 +1081,7 @@ function update_board_model(clickedObject) {
         gameState['totals'][currentPlayer] = totalPlayerBets + 1;
         gameState['chips'][currentPlayer] = totalPlayerChips - 1;
         
-        update_view(gameState['state']['player'], clickedID);
+        update_view(gameState['state']['player'], clickedID, 0);
         
         restack(clickedID);
       } else {
@@ -1172,7 +1160,7 @@ function update_chips(chipsT1, chipsT2) {
                         '<div class="token-bottom-stripe2"></div>' +
                         '<div class="token-left-stripe1"></div>' +
                         '<div class="token-left-stripe2"></div>' +
-                        '<div class="token-ring">1</div>' +
+                        '<div class="token-ring"></div>' +
                       '</div>');
     chipTeam1.css('left', leftVal);
     chipTeam1.css('top', topVal);
@@ -1202,7 +1190,7 @@ function update_chips(chipsT1, chipsT2) {
                         '<div class="token-bottom-stripe2"></div>' +
                         '<div class="token-left-stripe1"></div>' +
                         '<div class="token-left-stripe2"></div>' +
-                        '<div class="token-ring">1</div>' +
+                        '<div class="token-ring"></div>' +
                       '</div>');
     chipTeam2.css('left', leftVal);
     chipTeam2.css('top', topVal);
@@ -1229,98 +1217,124 @@ function update_chips(chipsT1, chipsT2) {
   }
 }
 
-function update_view(player, object) {
+function update_view(player, object, endOfRound) {
   var bets = gameState['bets'];
   var tokenCount = 2;
   
-  // Update bets.
-  for (var bet in bets) {
-    if (bets.hasOwnProperty(bet)) {
-      // Show team one's chips on the table.
-      if (gameState['bets'][bet]['team1'] > 0 && player == 'team1') {
-        if (bet == object) {
-          // Calculate vars needed to position chip.
-          var parentMidX = $('#' + bet).width() / 2;
-          var parentMidY = $('#' + bet).height() / 2;
-          var tokenMid = 10;
-          var leftVal = parentMidX - tokenMid;
-          var topVal = parentMidY - tokenMid;
-          
-          // Stagger placement of chips so the stack can be seen.
-          var numChipsHere = $('#' + bet).children().size();
-          if (numChipsHere > 0) {
-            topVal = topVal - 2 * numChipsHere;
-          }
-          
-          $('#' + bet).css('position', 'relative');
-          $('#' + bet).css('z-index', '1');
-          
-          // Add chip to the table.
-          var chip = $('<div class="token blue">' +
-                         '<div class="token-top-stripe1"></div>' +
-                         '<div class="token-top-stripe2"></div>' +
-                         '<div class="token-right-stripe1"></div>' +
-                         '<div class="token-right-stripe2"></div>' +
-                         '<div class="token-bottom-stripe1"></div>' +
-                         '<div class="token-bottom-stripe2"></div>' +
-                         '<div class="token-left-stripe1"></div>' +
-                         '<div class="token-left-stripe2"></div>' +
-                         '<div class="token-ring">1</div>' +
-                       '</div>');
-          chip.css('left', leftVal);
-          chip.css('top', topVal);
-          chip.css('z-index', tokenCount);
-          $('#' + bet).append(chip);
-          
-          tokenCount++;
-        }
+  if (endOfRound) {
+    // Update scores.
+    gameState['scores']['team1'] += gameState['drinks']['team2'];
+    gameState['scores']['team2'] += gameState['drinks']['team1'];
+    $('#team1-score').text(gameState['scores']['team1']);
+    $('#team2-score').text(gameState['scores']['team2']);
+    
+    // Clear chips from board.
+    for (var bet in bets) {
+      if (bets.hasOwnProperty(bet)) {
+        $('#' + bet).empty();
       }
-        
-      // Show team two's chips on the table.
-      if (gameState['bets'][bet]['team2'] > 0 && player == 'team2') {
-        if (bet == object) {
-          // Calculate vars needed to position chip.
-          var parentMidX = $('#' + bet).width() / 2;
-          var parentMidY = $('#' + bet).height() / 2;
-          var tokenMid = 10;
-          var leftVal = parentMidX - tokenMid;
-          var topVal = parentMidY - tokenMid;
-          
-          // Stagger placement of chips so the stack can be seen.
-          var numChipsHere = $('#' + bet).children().size();
-          if (numChipsHere > 0) {
-            topVal = topVal - 2 * numChipsHere;
-          }
-          
-          $('#' + bet).css('position', 'relative');
-          $('#' + bet).css('z-index', '1');
-          
-          // Add chip to the table.
-          var chip = $('<div class="token yellow">' +
-                         '<div class="token-top-stripe1"></div>' +
-                         '<div class="token-top-stripe2"></div>' +
-                         '<div class="token-right-stripe1"></div>' +
-                         '<div class="token-right-stripe2"></div>' +
-                         '<div class="token-bottom-stripe1"></div>' +
-                         '<div class="token-bottom-stripe2"></div>' +
-                         '<div class="token-left-stripe1"></div>' +
-                         '<div class="token-left-stripe2"></div>' +
-                         '<div class="token-ring">1</div>' +
-                       '</div>');
-          chip.css('left', leftVal);
-          chip.css('top', topVal);
-          chip.css('z-index', tokenCount);
-          $('#' + bet).append(chip);
-          
-          tokenCount++;
-        }
-      } 
     }
+    
+    // Reset players' chip bank.
+    update_chips(gameState['bank'], gameState['bank']);
+    
+    // Set current player.
+    var currPlayer = gameState['state']['player'];
+    if (currPlayer == 'team1') {
+      gameState['state']['player'] = 'team2';
+      $('#team2-chips').css('background', '#77b3a2');
+      $('#team1-chips').css('background', '#397564');
+    } else {
+      gameState['state']['player'] = 'team1';
+      $('#team1-chips').css('background', '#77b3a2');
+      $('#team2-chips').css('background', '#397564');
+    }
+  } else {
+    // Update bets.
+    for (var bet in bets) {
+      if (bets.hasOwnProperty(bet)) {
+        // Show team one's chips on the table.
+        if (gameState['bets'][bet]['team1'] > 0 && player == 'team1') {
+          if (bet == object) {
+            // Calculate vars needed to position chip.
+            var parentMidX = $('#' + bet).width() / 2;
+            var parentMidY = $('#' + bet).height() / 2;
+            var tokenMid = 10;
+            var leftVal = parentMidX - tokenMid;
+            var topVal = parentMidY - tokenMid;
+
+            // Stagger placement of chips so the stack can be seen.
+            var numChipsHere = $('#' + bet).children().size();
+            if (numChipsHere > 0) {
+              topVal = topVal - 2 * numChipsHere;
+            }
+
+            $('#' + bet).css('position', 'relative');
+            $('#' + bet).css('z-index', '1');
+
+            // Add chip to the table.
+            var chip = $('<div class="token blue">' +
+                           '<div class="token-top-stripe1"></div>' +
+                           '<div class="token-top-stripe2"></div>' +
+                           '<div class="token-right-stripe1"></div>' +
+                           '<div class="token-right-stripe2"></div>' +
+                           '<div class="token-bottom-stripe1"></div>' +
+                           '<div class="token-bottom-stripe2"></div>' +
+                           '<div class="token-left-stripe1"></div>' +
+                           '<div class="token-left-stripe2"></div>' +
+                           '<div class="token-ring"></div>' +
+                         '</div>');
+            chip.css('left', leftVal);
+            chip.css('top', topVal);
+            chip.css('z-index', tokenCount);
+            $('#' + bet).append(chip);
+
+            tokenCount++;
+          }
+        }
+
+        // Show team two's chips on the table.
+        if (gameState['bets'][bet]['team2'] > 0 && player == 'team2') {
+          if (bet == object) {
+            // Calculate vars needed to position chip.
+            var parentMidX = $('#' + bet).width() / 2;
+            var parentMidY = $('#' + bet).height() / 2;
+            var tokenMid = 10;
+            var leftVal = parentMidX - tokenMid;
+            var topVal = parentMidY - tokenMid;
+
+            // Stagger placement of chips so the stack can be seen.
+            var numChipsHere = $('#' + bet).children().size();
+            if (numChipsHere > 0) {
+              topVal = topVal - 2 * numChipsHere;
+            }
+
+            $('#' + bet).css('position', 'relative');
+            $('#' + bet).css('z-index', '1');
+
+            // Add chip to the table.
+            var chip = $('<div class="token yellow">' +
+                           '<div class="token-top-stripe1"></div>' +
+                           '<div class="token-top-stripe2"></div>' +
+                           '<div class="token-right-stripe1"></div>' +
+                           '<div class="token-right-stripe2"></div>' +
+                           '<div class="token-bottom-stripe1"></div>' +
+                           '<div class="token-bottom-stripe2"></div>' +
+                           '<div class="token-left-stripe1"></div>' +
+                           '<div class="token-left-stripe2"></div>' +
+                           '<div class="token-ring"></div>' +
+                         '</div>');
+            chip.css('left', leftVal);
+            chip.css('top', topVal);
+            chip.css('z-index', tokenCount);
+            $('#' + bet).append(chip);
+
+            tokenCount++;
+          }
+        } 
+      }
+    }
+    
+    update_chips(gameState['chips']['team1'], gameState['chips']['team2']);
   }
-  
-  update_chips(gameState['chips']['team1'], gameState['chips']['team2']);
-  
-  // Update scores.
-  $('#team1-score').text(gameState['drinks']['team2']);
-  $('#team2-score').text(gameState['drinks']['team1']);
 }
