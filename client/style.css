@@ -181,7 +181,7 @@ body {
 #form {
   background: #397564;
   border-radius: 5px;
-  box-shadow: 0 0 3px 3px #131511;
+  box-shadow: 0 0 5px 5px #131511;
   height: 250px;
   margin: 150px auto 0px auto;
   padding: 50px;
@@ -201,7 +201,7 @@ body {
 #game-table {
   background: #397564;
   border-radius: 5px;
-  box-shadow: 0 0 8px 8px #131511;
+  box-shadow: 0 0 5px 5px #131511;
   height: 514px;
   margin: 60px auto 0px auto;
   padding: 0px 30px 0px 0px;
@@ -327,8 +327,9 @@ select {
   float: right;
 	font-size: 12pt;
 	height: 30px;
+	outline: none;
 	padding: 4px;
-	width: 50px;
+	width: 60px;
 }
 
 select:hover {

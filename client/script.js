@@ -914,14 +914,10 @@ function initialize_game() {
   }
   
   // Display gameboard.
-  $('#form').fadeOut(100, 'linear', function() {
+  $('#form').fadeOut(400, 'linear', function() {
     $('#form').remove();
+    $('#game-table').fadeIn(300, 'linear');
   });
-  $('#title').fadeOut(100, 'linear', function() {
-    $('#title').remove();
-  });
-  
-  $('#game-table').fadeIn(100, 'linear');
   
   draw_wheel();
 }
