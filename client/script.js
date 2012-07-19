@@ -1197,8 +1197,8 @@ function update_chips(chipsT1, chipsT2) {
   }
   
   // Update chips count display.
-  $('#team1-chips').append('<div class="chip-counts">' + gameState['chips']['team1'] + '</div>');
-  $('#team2-chips').append('<div class="chip-counts">' + gameState['chips']['team2'] + '</div>');
+  $('#team1-chips').append('<div class="chip-counts">' + chipsT1 + '</div>');
+  $('#team2-chips').append('<div class="chip-counts">' + chipsT2 + '</div>');
   
   if (gameState['state']['undo']) {
     currentPlayer = gameState['state']['player'];
@@ -1232,7 +1232,9 @@ function update_view(player, object, endOfRound) {
     }
     
     // Reset players' chip bank.
-    update_chips(gameState['bank'], gameState['bank']);
+    var chipT1Reset = gameState['chips']['team1'] + gameState['drinks']['team2'];
+    var chipT2Reset = gameState['chips']['team2'] + gameState['drinks']['team1'];
+    update_chips(chipT1Reset, chipT2Reset);
     
     // Set current player.
     var currPlayer = gameState['state']['player'];
