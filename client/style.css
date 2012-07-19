@@ -178,6 +178,16 @@ body {
   float: right;
 }
 
+#form {
+  background: #397564;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 3px #131511;
+  height: 250px;
+  margin: 150px auto 0px auto;
+  padding: 50px;
+  width: 350px;
+}
+
 #game-board {
   background: #397564;
   float: left;
@@ -310,6 +320,34 @@ body {
   width: 131px;
 }
 
+select {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+	font-size: 12pt;
+	height: 30px;
+	padding: 4px;
+	width: 50px;
+}
+
+select:hover {
+  background: #e5e5e5;
+}
+
+.select-container {
+  font-size: 12pt;
+  height: 30px;
+  margin: 0px 0px 10px 0px;
+}
+
+.select-title {
+  float: right;
+  font-size: 16pt;
+  padding: 4px 10px 0px 0px;
+  text-shadow: 1px 1px #285347;
+}
+
 #settings-area {
   float: right;
   height: 90px;
@@ -368,6 +406,24 @@ body {
 #spot-19, #spot-22, #spot-25,
 #spot-28, #spot-31, #spot-34 {
   height: 62px;
+}
+
+#start-button {
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+	font-size: 14pt;
+	height: 22px;
+	margin: 15px 0px 0px 0px;
+	padding: 4px;
+	text-align: center;
+	width: 80px;
+}
+
+#start-button:hover {
+  background: #e5e5e5;
 }
 
 #team1 {
@@ -462,6 +518,13 @@ body {
   position: relative;
   width: 172px;
   z-index: -1;
+}
+
+#title {
+  font-size: 48pt;
+  font-weight: bold;
+  margin: 0px 0px 25px 0px;
+  text-shadow: 1px 1px #285347;
 }
 
 .token {

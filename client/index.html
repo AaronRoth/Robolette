@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<meta charset="UTF-8" />
 		<title>Robolette</title>
 		<link href="font-awesome.css" type="text/css" rel="stylesheet" />
 		<link href="style.css" type="text/css" rel="stylesheet" />
@@ -9,11 +10,10 @@
 	</head>
 	
 	<body>
-		<h1 id="title">Robolette</h1>
-		
 		<div id="form">
-			<div>
-				<span>starting bank</span>
+			<div id="title">Robolette</div>
+			
+			<div class="select-container">
 				<select id="starting-bank">
 					<option>1</option>
 					<option>2</option>
@@ -26,10 +26,10 @@
 					<option>9</option>
 					<option>10</option>
 				</select>
+				<div class="select-title">starting bank</div>
 			</div>
 			
-			<div>
-				<span>minimum bet</span>
+			<div class="select-container">
 				<select id="min-bet">
 					<option>1</option>
 					<option>2</option>
@@ -42,10 +42,10 @@
 					<option>9</option>
 					<option>10</option>
 				</select>
+				<div class="select-title">minimum bet</div>
 			</div>
 			
-			<div>
-				<span>maximum bet</span>
+			<div class="select-container">
 				<select id="max-bet">
 					<option>1</option>
 					<option>2</option>
@@ -58,9 +58,10 @@
 					<option>9</option>
 					<option>10</option>
 				</select>
+				<div class="select-title">maximum bet</div>
 			</div>
 			
-			<div id="start-button">play game</div>
+			<div id="start-button">play</div>
 		</div>
 		
 		<div id="game-table" style="display: none">
