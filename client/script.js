@@ -453,7 +453,7 @@ function determine_outcome(winningNumber) {
   });
   
   // Update view so that the score board will reflect new wins/losses, etc.
-  update_view('neither', null, 1);
+  update_view('neither', null, 1, 1);
   
   // Get drinks to be poured.
   var drinksT1 = gameState['drinks']['team1'];
@@ -942,6 +942,10 @@ function reset_board_model() {
   gameState['totals']['team1'] = 0;
   gameState['totals']['team2'] = 0;
   
+  // Reset the chips.
+  gameState['chips']['team1'] = gameState['bank'];
+  gameState['chips']['team2'] = gameState['bank'];
+  
   // Reset state values.
   gameState['state']['spins'] = 1;
   gameState['state']['undo'] = 0;
@@ -1034,8 +1038,13 @@ function stop_wheel() {
   context.save();
   var winningNumber = numbers[index];
   
-  // Determine winners and update the view.
-  determine_outcome(winningNumber);
+  // Determine winners and update the view if bets have been made.
+  if (gameState['totals']['team1'] != 0 && gameState['totals']['team2'] != 0) {
+    determine_outcome(winningNumber); 
+  } else {
+    update_view('neither', null, 1, 0);
+    reset_board_model();
+  }
 }
 
 function undo() {
@@ -1077,7 +1086,7 @@ function update_board_model(clickedObject) {
         gameState['totals'][currentPlayer] = totalPlayerBets + 1;
         gameState['chips'][currentPlayer] = totalPlayerChips - 1;
         
-        update_view(gameState['state']['player'], clickedID, 0);
+        update_view(gameState['state']['player'], clickedID, 0, 1);
         
         restack(clickedID);
       } else {
@@ -1213,7 +1222,7 @@ function update_chips(chipsT1, chipsT2) {
   }
 }
 
-function update_view(player, object, endOfRound) {
+function update_view(player, object, endOfRound, betsWereMade) {
   var bets = gameState['bets'];
   var tokenCount = 2;
   
@@ -1231,21 +1240,27 @@ function update_view(player, object, endOfRound) {
       }
     }
     
-    // Reset players' chip bank.
-    var chipT1Reset = gameState['chips']['team1'] + gameState['drinks']['team2'];
-    var chipT2Reset = gameState['chips']['team2'] + gameState['drinks']['team1'];
-    update_chips(chipT1Reset, chipT2Reset);
-    
-    // Set current player.
-    var currPlayer = gameState['state']['player'];
-    if (currPlayer == 'team1') {
-      gameState['state']['player'] = 'team2';
-      $('#team2-chips').css('background', '#77b3a2');
-      $('#team1-chips').css('background', '#397564');
+    if (betsWereMade) {
+      // Reset players' chip bank.
+      var chipT1Reset = gameState['chips']['team1'] + gameState['drinks']['team2'];
+      var chipT2Reset = gameState['chips']['team2'] + gameState['drinks']['team1'];
+      update_chips(chipT1Reset, chipT2Reset);
+
+      // Set current player.
+      var currPlayer = gameState['state']['player'];
+      if (currPlayer == 'team1') {
+        gameState['state']['player'] = 'team2';
+        $('#team2-chips').css('background', '#77b3a2');
+        $('#team1-chips').css('background', '#397564');
+      } else {
+        gameState['state']['player'] = 'team1';
+        $('#team1-chips').css('background', '#77b3a2');
+        $('#team2-chips').css('background', '#397564');
+      }
     } else {
-      gameState['state']['player'] = 'team1';
-      $('#team1-chips').css('background', '#77b3a2');
-      $('#team2-chips').css('background', '#397564');
+      // Reset players' chip bank to the full amount in bank.
+      var bank = gameState['bank'];
+      update_chips(bank, bank);
     }
   } else {
     // Update bets.
