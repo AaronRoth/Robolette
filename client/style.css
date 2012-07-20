@@ -277,6 +277,18 @@ body {
   padding: 5px 1px 0px 0px;
 }
 
+#message-box {
+  background: #1c1e19;
+  border-radius: 5px;
+  color: #ffffff;
+  display: none;
+  left: 150px;
+  padding: 9px;
+  position: absolute;
+  top: 25px;
+  width: 350px;
+}
+
 #min-max {
   background: #1c1e19;
   border-radius: 5px;
@@ -423,6 +435,7 @@ select:hover {
 #settings-area {
   float: right;
   height: 90px;
+  position: relative;
   width: 620px;
 }
 

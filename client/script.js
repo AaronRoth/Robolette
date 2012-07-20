@@ -106,7 +106,7 @@ $(document).ready(function() {
       }
       
     } else {
-      alert('Cannot make or undo bets right now!');
+      display_message('Cannot make or undo bets right now!');
     }
   });
   
@@ -347,7 +347,7 @@ $(document).ready(function() {
   });
   
   // Hide settings menu if undo is clicked.
-  $('#undo').click(hide_menu);  
+  $('#undo').click(hide_menu);
 });
 
 function determine_outcome(winningNumber) {
@@ -631,6 +631,16 @@ function determine_winning_bets(winningNumber) {
   }
 }
 
+function display_message(message) {
+  $('#message-box').text(message);
+  
+  $('#message-box').fadeIn(300, 'swing', function() {
+    $('#message-box').fadeOut(5000, 'swing', function() {
+      $('#message-box').css('display', 'none');
+    });
+  });
+}
+
 function draw_wheel() {
   var canvas = document.getElementById('wheel');
   
@@ -763,8 +773,8 @@ function draw_wheel() {
     context.lineTo(187 - 0, 210 - (outerNumRadius + 10));
     context.fill();
   } else {
-    alert('Your browser does not support this game! ' +
-          'Try Safari, Chrome, Firefox, or Opera.');
+    display_message('Your browser does not support this game! ' +
+                    'Try Safari, Chrome, Firefox, or Opera.');
   }
 }
 
@@ -960,13 +970,14 @@ function stop_wheel() {
   } else {
     update_view('neither', null, 1, 0);
     reset_board_model();
+    display_message('No bets were on the table!');
   }
 }
 
 function undo() {
   if (gameState['totals']['team1'] == 0 &&
       gameState['totals']['team2'] == 0) {
-        alert('No bets have been made.');
+        display_message('No bets have been made.');
   } else {
     if (gameState['state']['undo'] == 0) {
       gameState['state']['undo'] = 1;
@@ -978,7 +989,7 @@ function undo() {
       } else if (currentPlayer == 'team2') {
         $('#team2-chips').append('<div id=\"team2-undo-flag\">undo <i class=\"icon-remove-sign\"></i></div>');
       } else {
-        alert('No team has been selected to play.');
+        display_message('No team has been selected to play.');
       }
     }
   }
@@ -993,7 +1004,7 @@ function update_board_model(clickedObject) {
   var totalPlayerChips = gameState['chips'][currentPlayer];
   
   if (currentPlayer == 'none') {
-    alert('Please select a player.');
+    display_message('Please select a player.');
   } else {
     // Add a bet.
     if (gameState['state']['undo'] == 0 && totalPlayerBets < maxBet) {
@@ -1006,7 +1017,7 @@ function update_board_model(clickedObject) {
         
         restack(clickedID);
       } else {
-        alert('No more chips to make the bet.');
+        display_message('No more chips to make the bet.');
       }
     } else if (gameState['state']['undo'] == 1) {
       // Undo a bet.
@@ -1043,12 +1054,12 @@ function update_board_model(clickedObject) {
         // Update the chip pile.
         update_chips(gameState['chips']['team1'], gameState['chips']['team2']);
       } else if (totalPlayerBets > 0) {
-        alert('No bet to remove on this spot.');
+        display_message('No bet to remove on this spot.');
       } else {
-        alert('Player has no bets to remove.');
+        display_message('Player has no bets to remove.');
       }
     } else if (totalPlayerBets == maxBet) {
-      alert('Maximum number of bets have been made.');
+      display_message('Maximum number of bets have been made.');
     }
   }
 }
@@ -1133,7 +1144,7 @@ function update_chips(chipsT1, chipsT2) {
     } else if (currentPlayer == 'team2') {
       $('#team2-chips').append('<div id=\"team2-undo-flag\">undo <i class=\"icon-remove-sign\"></i></div>');
     } else {
-      alert('No bets have been made.');
+      display_message('No bets have been made.');
     }
   }
 }
