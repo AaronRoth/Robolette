@@ -7,6 +7,10 @@
   background: #000000;
 }
 
+.text-between {
+  font-size: 14pt;
+}
+
 #bet-board {
   height: 350px;
   left: 0px;
@@ -60,8 +64,9 @@
 
 .bet-spacer-other {
   float: left;
-  height: 72px;
-  width: 88px;
+  height: 66px;
+  padding: 0px 0px 0px 1px;
+  width: 87px;
 }
 
 .bet-spacer-square {
@@ -178,6 +183,17 @@ body {
   float: right;
 }
 
+.diamonds {
+  border: 2px solid #ffffff;
+  height: 34px;
+  right: 23px;
+  position: absolute;
+  top: 14px;
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  width: 34px;
+}
+
 #form {
   background: #397564;
   border-radius: 5px;
@@ -251,7 +267,6 @@ body {
 
 .numbers {
   color: #ffffff;
-  display: block;
   font-size: 22pt;
   font-style: bold;
   -moz-transform: rotate(-90deg);
@@ -283,10 +298,9 @@ body {
 #other-bets-area {
   border-left: 4px solid #ffffff;
   color: #ffffff;
-  font-size: 16pt;
+  font-size: 22pt;
   float: left;
   height: 140px;
-  /*margin: 0px 42px 0px 44px;*/
   width: 528px;
 }
 
@@ -523,6 +537,11 @@ select:hover {
   font-size: 8pt;
   height: 15px;
   width: 131px;
+}
+
+.text-between {
+  font-size: 14pt;
+  line-height: 1.5;
 }
 
 .thirds-bets {
