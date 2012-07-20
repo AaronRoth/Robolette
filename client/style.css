@@ -141,7 +141,7 @@
 }
 
 .blue {
-  background: #004574;
+  background: rgb(17, 38, 103);
 }
 
 body {
@@ -180,7 +180,14 @@ body {
 }
 
 #cog-wheel {
+  border-radius: 5px;
   float: right;
+  padding: 5px 5px 1px 5px;
+  margin: 0px;
+}
+
+#cog-wheel:hover {
+  background: #77b3a2;
 }
 
 #corner-hack1 {
@@ -353,15 +360,16 @@ body {
 }
 
 .red {
-  background: #ff1a37;
+  background: #ff0000;
 }
 
 #reset, #undo {
   border-radius: 5px;
   cursor: pointer;
   height: 14px;
+  margin: 0px 5px 0px 0px;
   padding: 3px 3px 2px 3px;
-  width: 97px;
+  width: 94px;
 }
 
 #reset:hover, #undo:hover {
@@ -422,23 +430,19 @@ select:hover {
   border-radius: 5px;
   cursor: pointer;
   font-size: 14pt;
-  height: 14px;
-  margin: 0px 0px 0px 79px;
+  height: 24px;
+  margin: 0px 0px 0px 85px;
   padding: 2px;
   width: 18px;
-}
-
-#settings-button:hover {
-  background: #77b3a2;
 }
 
 #settings-menu {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   float: right;
-  height: 60px;
-  margin: 25px 0px 0px 0px;
-  padding: 5px;
+  height: 70px;
+  margin: 20px 0px 0px 0px;
+  padding: 0px 0px 5px 5px;
 }
 
 #settings-reset {
@@ -714,5 +718,5 @@ select:hover {
 }
 
 .yellow {
-  background: #ffe500;
+  background: rgb(255, 190, 0);
 }

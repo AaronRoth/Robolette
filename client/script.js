@@ -31,7 +31,7 @@ var textRadius = 132;
 
 // Wheel style and content.
 var black = '#000000';
-var darkWood = '#3e1a0e';
+var darkWood = 'rgb(60, 20, 15)';
 var fontStyle = 'bold 13pt Palatino'; // "Cantata One"
 var green = '#006600';
 var lightWood = '#c89158';
@@ -302,6 +302,33 @@ $(document).ready(function() {
         for (var i = 0; i < nums.length; i++) {
           $('#spot-' + nums[i]).css('opacity', '1.0');
         }
+      }
+    }
+  );
+  
+  // Lightly shade chips area if hovered over.
+  $('#team1-chips').hover(
+    function() {
+      if (gameState['state']['player'] == 'team2') {
+        $('#team1-chips').css('background', '#61a793');
+      }
+    },
+    function() {
+      if (gameState['state']['player'] == 'team2') {
+        $('#team1-chips').css('background', '#397564');
+      }
+    }
+  );
+  
+  $('#team2-chips').hover(
+    function() {
+      if (gameState['state']['player'] == 'team1') {
+        $('#team2-chips').css('background', '#61a793');
+      }
+    },
+    function() {
+      if (gameState['state']['player'] == 'team1') {
+        $('#team2-chips').css('background', '#397564');
       }
     }
   );
