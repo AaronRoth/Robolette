@@ -183,8 +183,49 @@ body {
   float: right;
 }
 
+#corner-hack1 {
+  background: #397564;
+  height: 4px;
+  left: 616px;
+  position: absolute;
+  top: 206px;
+  width: 4px;
+  z-index: -10;
+}
+
+#corner-hack2 {
+  background: #397564;
+  height: 4px;
+  left: 0px;
+  position: absolute;
+  top: 206px;
+  width: 4px;
+  z-index: -10;
+}
+
+#corner-hack3 {
+  background: #397564;
+  height: 4px;
+  left: -4px;
+  position: absolute;
+  top: 136px;
+  width: 4px;
+  z-index: -10;
+}
+
+#corner-hack4 {
+  background: #397564;
+  height: 4px;
+  left: 524px;
+  position: absolute;
+  top: 136px;
+  width: 4px;
+  z-index: -10;
+}
+
 .diamonds {
   border: 2px solid #ffffff;
+  border-radius: 5px;
   height: 34px;
   right: 23px;
   position: absolute;
@@ -206,6 +247,7 @@ body {
 
 #game-board {
   background: #ffffff;
+  border-radius: 5px;
   float: left;
   height: 350px;
   position: relative;
@@ -216,8 +258,8 @@ body {
 
 #game-table {
   background: #397564;
-  border-radius: 5px;
-  /*box-shadow: 0 0 5px 5px #131511;*/
+  /*border-radius: 5px;
+  box-shadow: 0 0 5px 5px #131511;*/
   height: 514px;
   margin: 60px auto 0px auto;
   padding: 0px 30px 0px 0px;
@@ -257,8 +299,12 @@ body {
 
 #num-bets-area {
   border-bottom: 4px solid #ffffff;
+  border-right: 4px solid #ffffff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
   height: 206px;
-  width: 620px;
+  width: 616px;
 }
 
 #number-0-span {
@@ -297,10 +343,12 @@ body {
 
 #other-bets-area {
   border-left: 4px solid #ffffff;
+  border-bottom-left-radius: 5px;
   color: #ffffff;
   font-size: 22pt;
   float: left;
   height: 140px;
+  position: relative;
   width: 528px;
 }
 
@@ -419,6 +467,8 @@ select:hover {
 #spot-0 {
   background: #397564;
   border: 4px solid #ffffff;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   float: left;
   height: 202px;
   position: relative;
@@ -436,6 +486,22 @@ select:hover {
 #spot-2nd, #spot-3rd, #spot-1to18, #spot-even,
 #spot-red, #spot-black, #spot-odd, #spot-19to36 {
   background: #397564;
+}
+
+#spot-2to35 {
+  border-right: none;
+}
+
+#spot-3to36 {
+  border-right: none;
+}
+
+#spot-1to34 {
+  border-right: none;
+}
+
+#spot-19to36 {
+  border-bottom-right-radius: 5px;
 }
 
 #start-button {
