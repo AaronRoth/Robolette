@@ -110,8 +110,8 @@ $(document).ready(function() {
     }
   });
   
-  // Spin the roulette wheel.
-  $('#spin-button').live('click', function() {
+  // Spin wheel if swiped.
+  $('#spin-button').bind('swipeone', function() {
     spin();
   });
   
