@@ -189,7 +189,7 @@ body {
 }
 
 #game-board {
-  background: #397564;
+  background: #ffffff;
   float: left;
   height: 350px;
   position: relative;
@@ -201,7 +201,7 @@ body {
 #game-table {
   background: #397564;
   border-radius: 5px;
-  box-shadow: 0 0 5px 5px #131511;
+  /*box-shadow: 0 0 5px 5px #131511;*/
   height: 514px;
   margin: 60px auto 0px auto;
   padding: 0px 30px 0px 0px;
@@ -284,8 +284,9 @@ body {
   border-left: 4px solid #ffffff;
   color: #ffffff;
   font-size: 16pt;
+  float: left;
   height: 140px;
-  margin: 0px 42px 0px 44px;
+  /*margin: 0px 42px 0px 44px;*/
   width: 528px;
 }
 
@@ -386,6 +387,13 @@ select:hover {
   margin: 0px 0px 0px 7px;
 }
 
+.side-spacers {
+  background: #397564;
+  float: left;
+  height: 140px;
+  width: 44px;
+}
+
 #spin-button {
   height: 140px;
   left: 117px;
@@ -395,6 +403,7 @@ select:hover {
 }
 
 #spot-0 {
+  background: #397564;
   border: 4px solid #ffffff;
   float: left;
   height: 202px;
@@ -407,6 +416,12 @@ select:hover {
 #spot-19, #spot-22, #spot-25,
 #spot-28, #spot-31, #spot-34 {
   height: 62px;
+}
+
+#spot-1to34, #spot-2to35, #spot-3to36, #spot-1st,
+#spot-2nd, #spot-3rd, #spot-1to18, #spot-even,
+#spot-red, #spot-black, #spot-odd, #spot-19to36 {
+  background: #397564;
 }
 
 #start-button {
