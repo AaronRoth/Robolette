@@ -380,8 +380,7 @@ body {
   cursor: pointer;
   height: 14px;
   margin: 0px 5px 0px 0px;
-  padding: 3px 3px 2px 3px;
-  width: 94px;
+  padding: 3px 0px 2px 3px;
 }
 
 #reset:hover, #undo:hover {
@@ -444,7 +443,7 @@ select:hover {
   cursor: pointer;
   font-size: 14pt;
   height: 24px;
-  margin: 0px 0px 0px 85px;
+  margin: 0px 0px 0px 83px;
   padding: 2px;
   width: 18px;
 }
