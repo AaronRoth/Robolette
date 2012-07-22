@@ -390,7 +390,7 @@ function determine_outcome(winningNumber) {
   
   // Send drink updates to server.
   $.ajax({
-    url: 'http://findaaron.nfshost.com/Robolette/php/update_counts.php',
+    url: 'http://www.geneseeshore.com/Robolette/server/update_counts.php',
     type: 'GET',
     data: {team_one: drinksT1, team_two: drinksT2}
   });
