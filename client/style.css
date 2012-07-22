@@ -141,7 +141,7 @@
 }
 
 .blue {
-  background: rgb(17, 38, 103);
+  background: #012b67;
 }
 
 body {
@@ -268,7 +268,7 @@ body {
   /*border-radius: 5px;
   box-shadow: 0 0 5px 5px #131511;*/
   height: 514px;
-  margin: 60px auto 0px auto;
+  margin: 127px auto 0px auto;
   padding: 0px 30px 0px 0px;
   width: 994px;
 }
@@ -730,5 +730,5 @@ select:hover {
 }
 
 .yellow {
-  background: rgb(255, 190, 0);
+  background: #fed100;
 }

@@ -645,6 +645,10 @@ var gameState = {
     "team1": 0,
     "team2": 0
   },
+  "reload": {
+    "team1": 10,
+    "team2": 10
+  },
   "state": {
     "changes": 1,
     "player": "team1",

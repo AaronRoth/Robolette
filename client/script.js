@@ -61,6 +61,16 @@ var team2 = 'yellow';
 // --------------------------------------------- //
 
 $(document).ready(function() {
+  // Change game table margin if not using an iOS device.
+  var isMobile = {
+    iOS: function() {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+    }
+  };
+  if (!isMobile.iOS()) {
+    $('#game-table').css('margin', '60px auto 0px auto');
+  }
+  
   $('#start-button').click(initialize_game);
   
   // Make team 1 the current player.
@@ -106,7 +116,7 @@ $(document).ready(function() {
       }
       
     } else {
-      display_message('Cannot make or undo bets right now!');
+      display_message('You can\'t make or undo bets right now.');
     }
   });
   
@@ -366,6 +376,10 @@ function determine_outcome(winningNumber) {
       gameState['drinks']['team1'] += betsTeam2;
     }
   });
+  
+  // Make sure chips for next round are set.
+  gameState['reload']['team1'] = gameState['chips']['team1'] + gameState['drinks']['team2'];
+  gameState['reload']['team2'] = gameState['chips']['team2'] + gameState['drinks']['team1'];
   
   // Update view so that the score board will reflect new wins/losses, etc.
   update_view('neither', null, 1, 1);
@@ -773,7 +787,7 @@ function draw_wheel() {
     context.lineTo(187 - 0, 210 - (outerNumRadius + 10));
     context.fill();
   } else {
-    display_message('Your browser does not support this game! ' +
+    display_message('Your browser does\'t support this game! ' +
                     'Try Safari, Chrome, Firefox, or Opera.');
   }
 }
@@ -869,8 +883,8 @@ function reset_board_model() {
   gameState['totals']['team2'] = 0;
   
   // Reset the chips.
-  gameState['chips']['team1'] = gameState['bank'];
-  gameState['chips']['team2'] = gameState['bank'];
+  gameState['chips']['team1'] = gameState['reload']['team1'];
+  gameState['chips']['team2'] = gameState['reload']['team2'];
   
   // Reset state values.
   gameState['state']['spins'] = 1;
@@ -970,14 +984,14 @@ function stop_wheel() {
   } else {
     update_view('neither', null, 1, 0);
     reset_board_model();
-    display_message('No bets were on the table!');
+    display_message('Both players must make a bet.');
   }
 }
 
 function undo() {
   if (gameState['totals']['team1'] == 0 &&
       gameState['totals']['team2'] == 0) {
-        display_message('No bets have been made.');
+        display_message('No bets to undo.');
   } else {
     if (gameState['state']['undo'] == 0) {
       gameState['state']['undo'] = 1;
@@ -1017,7 +1031,7 @@ function update_board_model(clickedObject) {
         
         restack(clickedID);
       } else {
-        display_message('No more chips to make the bet.');
+        display_message('You\'re out of chips.');
       }
     } else if (gameState['state']['undo'] == 1) {
       // Undo a bet.
@@ -1054,9 +1068,9 @@ function update_board_model(clickedObject) {
         // Update the chip pile.
         update_chips(gameState['chips']['team1'], gameState['chips']['team2']);
       } else if (totalPlayerBets > 0) {
-        display_message('No bet to remove on this spot.');
+        display_message('No bets to remove in this spot.');
       } else {
-        display_message('Player has no bets to remove.');
+        display_message('You don\'t have any bets to remove.');
       }
     } else if (totalPlayerBets == maxBet) {
       display_message('Maximum number of bets have been made.');
@@ -1169,9 +1183,7 @@ function update_view(player, object, endOfRound, betsWereMade) {
     
     if (betsWereMade) {
       // Reset players' chip bank.
-      var chipT1Reset = gameState['chips']['team1'] + gameState['drinks']['team2'];
-      var chipT2Reset = gameState['chips']['team2'] + gameState['drinks']['team1'];
-      update_chips(chipT1Reset, chipT2Reset);
+      update_chips(gameState['reload']['team1'], gameState['reload']['team2']);
 
       // Set current player.
       var currPlayer = gameState['state']['player'];
@@ -1186,8 +1198,7 @@ function update_view(player, object, endOfRound, betsWereMade) {
       }
     } else {
       // Reset players' chip bank to the full amount in bank.
-      var bank = gameState['bank'];
-      update_chips(bank, bank);
+      update_chips(gameState['reload']['team1'], gameState['reload']['team2']);
     }
   } else {
     // Update bets.
