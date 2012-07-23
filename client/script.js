@@ -61,6 +61,7 @@ var team2 = 'yellow';
 // --------------------------------------------- //
 
 $(document).ready(function() {
+  /*
   // Change game table margin if not using an iOS device.
   var isMobile = {
     iOS: function() {
@@ -69,6 +70,11 @@ $(document).ready(function() {
   };
   if (!isMobile.iOS()) {
     $('#game-table').css('margin', '60px auto 0px auto');
+  }
+  */
+  
+  document.ontouchmove = function(event) {
+    event.preventDefault();
   }
   
   $('#start-button').click(initialize_game);
@@ -944,7 +950,7 @@ function rotate_wheel() {
     startAngle += spinAngle * Math.PI / 180;
     startAngleInner += spinAngle * Math.PI / 180;
     draw_wheel();
-    spinTimeout = setTimeout('rotate_wheel()', 30);
+    spinTimeout = setTimeout('rotate_wheel()', 1);
   }
 }
 

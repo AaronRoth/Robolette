@@ -147,7 +147,10 @@
 body {
   background: #1c1e19;
   font-family: Palatino;
+  height: 768px;
   margin: 0px;
+  padding: 0px;
+  width: 1024px;
 }
 
 #canvas-wrapper {
@@ -212,21 +215,21 @@ body {
 
 #corner-hack3 {
   background: #397564;
-  height: 4px;
-  left: -4px;
+  height: 142px;
+  left: -50px;
   position: absolute;
-  top: 136px;
-  width: 4px;
+  top: 0px;
+  width: 50px;
   z-index: -10;
 }
 
 #corner-hack4 {
   background: #397564;
-  height: 4px;
+  height: 142px;
   left: 524px;
   position: absolute;
-  top: 136px;
-  width: 4px;
+  top: 0px;
+  width: 50px;
   z-index: -10;
 }
 
@@ -265,9 +268,9 @@ body {
 
 #game-table {
   background: #397564;
-  height: 514px;
-  margin: 127px auto 0px auto;
-  padding: 0px 30px 0px 0px;
+  height: 641px; /*514px;*/
+  margin: 0px;
+  padding: 127px 0px 0px 0px;
   width: 994px;
 }
 
@@ -464,9 +467,8 @@ select:hover {
 }
 
 .side-spacers {
-  background: #397564;
   float: left;
-  height: 140px;
+  height: 138px;
   width: 44px;
 }
 
