@@ -61,14 +61,21 @@ var team2 = 'yellow';
 // --------------------------------------------- //
 
 $(document).ready(function() {
-  // Change game table margin if not using an iOS device.
+  // Change body and game table styling if not using an iOS device.
   var isMobile = {
     iOS: function() {
       return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
     }
   };
-  if (!isMobile.iOS()) {
-    $('#game-table').css('margin', '60px auto 0px auto');
+  if (isMobile.iOS()) {
+    var metaTag = '<meta name="apple-mobile-web-app-capable" content="yes" />';
+    $('head').append(metaTag);
+  } else {
+    $('#game-table').css('margin', '40px auto 0px auto');
+    $('#game-table').css('padding', '0px');
+    $('#game-table').css('height', '514px');
+    $('body').css('height', '0px');
+    $('body').css('width', '100%');
   }
   
   document.ontouchmove = function(event) {
@@ -864,6 +871,12 @@ function initialize_game() {
   });
   
   draw_wheel();
+  
+  // Send zero drink starting amounts to server.
+  $.ajax({
+    url: 'http://findaaron.nfshost.com/Robolette/server/reset_counts.php',
+    type: 'GET'
+  });
 }
 
 // Reset the values in the board model for a new round.
