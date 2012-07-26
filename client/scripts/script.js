@@ -61,7 +61,6 @@ var team2 = 'yellow';
 // --------------------------------------------- //
 
 $(document).ready(function() {
-  /*
   // Change game table margin if not using an iOS device.
   var isMobile = {
     iOS: function() {
@@ -71,7 +70,6 @@ $(document).ready(function() {
   if (!isMobile.iOS()) {
     $('#game-table').css('margin', '60px auto 0px auto');
   }
-  */
   
   document.ontouchmove = function(event) {
     event.preventDefault();
