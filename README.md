@@ -17,7 +17,12 @@ Parameters:
 + **team_one** - (required) Number of drinks you want to add to team one's drink count.
 + **team_two** - (required) Number of drinks you want to add to team two's drink count.
 
-Response: None
+Response:
+```
+2|3
+```
+
+Note: The response is the drink counts after the update had been made.
 
 ### Check drink counts
 
