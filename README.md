@@ -1,4 +1,4 @@
-# Robotlette
+# Robolette
 
 A modified roulette game: Punish your opponent with a drink every time you win a bet.
 
