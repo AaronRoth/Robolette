@@ -48,7 +48,7 @@ def main():
   # Request drink statuses from the server and send to the Arduino.
   while True:
     # Get and parse current drink values.
-    request_object = urllib2.urlopen('http://findaaron.nfshost.com/Robolette/php/get_counts.php')
+    request_object = urllib2.urlopen('http://findaaron.nfshost.com/Robolette/server/get_counts.php')
     pour_states_str = request_object.read()
     pour_states_list = pour_states_str.split('|')
     
