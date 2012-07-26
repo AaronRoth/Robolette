@@ -14,8 +14,8 @@ URL: http://www.geneseeshore.com/Robolette/server/update_counts.php
 Format: Text	
 Parameters:	
 
-+ **team_one** - (required) Number of drinks you want to add to team1's drink count.
-+ **team_two** - (required) Number of drinks you want to add to team2's drink count.
++ **team_one** - (required) Number of drinks you want to add to team one's drink count.
++ **team_two** - (required) Number of drinks you want to add to team two's drink count.
 
 Response: None
 
