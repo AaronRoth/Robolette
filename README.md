@@ -1,6 +1,6 @@
 # Robolette
 
-A modified roulette game: Punish your opponent with a drink every time you win a bet.
+A modified roulette game: Punish your opponent with a drink every time you win a bet
 
 ## Web Client Homepage
 
