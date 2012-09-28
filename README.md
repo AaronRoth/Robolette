@@ -4,13 +4,13 @@ A modified roulette game: Punish your opponent with a drink every time you win a
 
 ## Web Client Homepage
 
-URL: http://www.geneseeshore.com/Robolette/client
+URL: http://findaaron.nfshost.com/Robolette/client
 
 ## API Methods
 
 ### Update drink counts
 
-URL: http://www.geneseeshore.com/Robolette/server/update_counts.php  
+URL: http://findaaron.nfshost.com/Robolette/server/update_counts.php  
 Format: Text	
 Parameters:	
 
@@ -26,7 +26,7 @@ Note: The response is the drink counts after the update had been made.
 
 ### Check drink counts
 
-URL: http://www.geneseeshore.com/Robolette/server/check_counts.php  
+URL: http://findaaron.nfshost.com/Robolette/server/check_counts.php  
 Format: Text	
 Response:	
 ```
@@ -35,7 +35,7 @@ Response:
 
 ### Check and reduce drink counts
 
-URL: http://www.geneseeshore.com/Robolette/server/get_counts.php  
+URL: http://findaaron.nfshost.com/Robolette/server/get_counts.php  
 Format: Text	
 Response:	
 ```
@@ -45,7 +45,7 @@ Note: After every visit to this URL, each team's drink count is reduced by one.
 
 ### Reset each team's drink count to zero
 
-URL: http://www.geneseeshore.com/Robolette/server/reset_counts.php  
+URL: http://findaaron.nfshost.com/Robolette/server/reset_counts.php  
 Format: Text	
 Response:	
 ```
