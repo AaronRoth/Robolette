@@ -32,7 +32,7 @@ var textRadius = 132;
 // Wheel style and content.
 var black = '#000000';
 var darkWood = 'rgb(60, 20, 15)';
-var fontStyle = 'bold 13pt Palatino'; // "Cantata One"
+var fontStyle = 'bold 13pt Palatino';
 var green = '#006600';
 var lightWood = '#c89158';
 var lineWidth = 2;
